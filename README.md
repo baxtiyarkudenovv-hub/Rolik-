@@ -1,13 +1,26 @@
-# Xazna Antifrod — animatsion rolik (16:9)
+# Xalq banki · Xazna Antifrod — animatsion rolik (16:9)
 
-Tayyor video: `video/xazna_antifrod_rolik_16x9.mp4` (1920×1080, 30 fps, 72.6 s, musiqa va effekt tovushlari bilan).
+Joriy versiya: `video/xalqbank_xazna_antifrod_v3.mp4` (1920×1080, 30 fps, ~117 s).
+Diktor ovozi `assets/media/diktor.wav`, fon musiqasisiz, zamonaviy kinematik SFX bilan.
 
-## Qayta yig‘ish (v2)
+## v3 tuzilishi
+| Fayl | Vazifasi |
+|---|---|
+| `src/rolik.html` | Sahna sahifasi (`lib.js` + `v3.js`) |
+| `src/v3.js` | Oq-tilla fon, 3D proyeksiya (telefon, kartalar, kub o‘tish), kinetik matn, sahnalar |
+| `src/lib.js` | Ikonalar va ilova ekranlari |
+| `src/build_timeline.py` | Diktor ovozidagi pauzalar asosida sahna vaqtlari va subtitrlar → `timeline.json` |
+| `src/sfx.py` | Tovush dizayni (whoosh, braam, riser, impact, glitch, UI) + diktor miksi |
+| `src/prep_assets.py` | Xazna logotipini kesib olish |
+
+## Qayta yig‘ish
 ```bash
-python3 src/build_timeline.py          # voice/seg_XX.wav uzunligiga qarab sahna vaqtlari + subtitrlar
-python3 src/music.py music.wav         # musiqa + kinematik SFX + diktor ovozi (ducking bilan)
-node src/render.js music.wav video/out.mp4
+python3 src/prep_assets.py
+mkdir -p src/build/clip && ffmpeg -i assets/media/bank_xodimlari.mp4 -vf fps=30 -q:v 3 src/build/clip/f_%04d.jpg
+python3 src/build_timeline.py
+python3 src/sfx.py mix.wav
+node src/render.js mix.wav video/out.mp4
 ```
-Logotip qismlari: `assets/` (asl fayl `assets/xalqbank_logo_src.png`).
-Brauzerda ko‘rish: `src/rolik.html?play` (alohida kadr: `?t=40`).
-Matnlar va vaqtlar `src/rolik.html` ichidagi sahna funksiyalarida (`s1`…`s7`, `SCENES`).
+Bitta kadrni ko‘rish: `node src/preview.js <papka> 12.5 40`.
+
+Eski versiyalar: `src/rolik_v2.html` + `src/music.py` (v2), birinchi rolik `video/xazna_antifrod_rolik_16x9.mp4`.

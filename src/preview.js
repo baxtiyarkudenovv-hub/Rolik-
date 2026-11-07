@@ -8,6 +8,6 @@ const path = require('path');
   await pg.evaluate(() => window.assetsReady.then(() => document.fonts.ready));
   const tl = require('./timeline.json'); console.log(await pg.evaluate(tl => setTimeline(tl), tl));
   
-  for (const t of times) { await pg.evaluate(t => draw(t), t); await pg.screenshot({ path: `${out}/f_${t}.jpg`, type: 'jpeg', quality: 70 }); }
+  for (const t of times) { await pg.evaluate(async t => { await prepare(t); draw(t); }, t); await pg.screenshot({ path: `${out}/f_${t}.jpg`, type: 'jpeg', quality: 70 }); }
   console.log(errs.join('\n') || 'no errors'); await b.close();
 })();

@@ -6,253 +6,269 @@
   ],
   [
    "s1",
-   8.764
+   7.7
   ],
   [
    "s2",
-   16.007
+   13.3
   ],
   [
    "s3",
-   18.15
+   14.36
   ],
   [
    "s4",
-   17.364
+   15.79
   ],
   [
    "s5",
-   38.3
+   30.6
   ],
   [
    "s6",
-   18.721
+   14.92
   ],
   [
    "s7",
-   9.493
+   8.69
   ],
   [
    "end",
-   5.2
+   5.4
   ]
  ],
  "steps": [
-  10.729,
-  12.286,
-  6.643,
-  8.643
- ],
- "voice": [
-  [
-   7.35,
-   0
-  ],
-  [
-   15.914,
-   1
-  ],
-  [
-   31.921,
-   2
-  ],
-  [
-   50.071,
-   3
-  ],
-  [
-   67.636,
-   4
-  ],
-  [
-   78.364,
-   5
-  ],
-  [
-   90.65,
-   6
-  ],
-  [
-   97.293,
-   7
-  ],
-  [
-   105.736,
-   8
-  ],
-  [
-   124.657,
-   9
-  ]
+  9.05,
+  10.24,
+  4.233,
+  7.077
  ],
  "subs": [
   [
-   7.35,
-   10.791,
-   "Aksiyadorlik tijorat Xalq banki o‘z mijozlarini"
+   6.95,
+   9.28,
+   "Aksiyadorlik tijorat Xalq banki"
   ],
   [
-   10.741,
-   14.614,
-   "kiberxavfsizlikdan himoya qilish uchun ogohlantiradi!"
+   9.55,
+   11.795,
+   "o‘z mijozlarini kiberxavfsizlikdan"
   ],
   [
-   15.914,
-   18.805,
+   11.645,
+   13.89,
+   "himoya qilish uchun ogohlantiradi!"
+  ],
+  [
+   14.6,
+   17.066,
    "Kiberfiribgarlikning eng keng tarqalgan"
   ],
   [
-   18.755,
-   22.009,
+   16.916,
+   19.678,
    "usullaridan biri — smartfonga zararli dastur"
   ],
   [
-   21.959,
-   25.286,
+   19.528,
+   22.35,
    "o‘rnatib, ma’lumotlarni o‘g‘irlashga urinish."
   ],
   [
-   25.236,
-   28.272,
+   22.76,
+   25.268,
    "Odatda, foydalanuvchi qurilmasida zararli"
   ],
   [
-   28.222,
-   30.821,
+   25.117,
+   27.28,
    "dastur borligini bilmay ham qoladi."
   ],
   [
-   31.921,
-   36.674,
-   "Bunday xavfning oldini olish maqsadida, Bankning operativ kuzatuv"
+   27.9,
+   31.852,
+   "Bunday xavfni oldini olish maqsadida Bankning operativ kuzatuv va"
   ],
   [
-   36.624,
-   40.869,
-   "va frod monitoringi bo‘limi xodimlari Antifrod tizimlarini"
+   31.702,
+   35.595,
+   "frod monitoringi bo‘limi xodimlari Antifrod tizimlarini barqaror"
   ],
   [
-   40.819,
-   45.065,
-   "barqaror ishlash holatida saqlaydi, mijozlarga firibgarlik"
+   35.445,
+   39.28,
+   "ishlash holatida saqlaydi, mijozlarga firibgarlik holatlarining"
   ],
   [
-   45.015,
-   48.971,
-   "holatlarining ko‘payishi bo‘yicha tushuntirish beradi."
+   39.13,
+   41.62,
+   "ko‘payishi bo‘yicha tushuntirish beradi."
   ],
   [
-   50.071,
-   54.392,
-   "Xalq bankining Xazna mobil ilovasida maxsus antifrod tizimi"
+   42.26,
+   46.722,
+   "Xalq bankining Xazna mobil ilovasida maxsus antifrod tizimi ishga"
   ],
   [
-   54.342,
-   58.301,
-   "ishga tushirilgan bo‘lib, qurilmada shubhali dasturlar"
+   46.572,
+   50.835,
+   "tushirilgan bo‘lib, qurilmada shubhali dasturlar aniqlansa, bu"
   ],
   [
-   58.251,
-   62.789,
-   "aniqlansa, bu haqida darhol xabar beradi va xavfsizlik chorasi"
+   50.685,
+   55.014,
+   "haqida darhol xabar beradi va xavfsizlik chorasi sifatida ayrim"
   ],
   [
-   62.739,
-   66.336,
-   "sifatida ayrim amaliyotlarni vaqtincha cheklaydi."
+   54.864,
+   57.27,
+   "amaliyotlarni vaqtincha cheklaydi."
   ],
   [
-   67.636,
-   70.514,
+   58.05,
+   60.66,
    "Agar siz Xazna mobil ilovasi orqali pul"
   ],
   [
-   70.464,
-   73.923,
+   60.51,
+   63.625,
    "o‘tkazmoqchi bo‘lsangiz va sizda zararli dastur"
   ],
   [
-   73.873,
-   77.114,
+   63.475,
+   66.4,
    "aniqlansa, ilova sizni darhol ogohlantiradi."
   ],
   [
-   78.364,
-   81.691,
-   "Virusni o‘chirib tashlash uchun ekranda paydo"
+   67.1,
+   70.345,
+   "Virusni o‘chirib tashlash uchun ekranda paydo bo‘lgan"
   ],
   [
-   81.641,
-   85.186,
-   "bo‘lgan «Muammoni hal qilish» tugmasini bosasiz."
+   70.195,
+   72.68,
+   "«Muammoni hal qilish» tugmasini bosasiz."
   ],
   [
-   85.136,
-   87.224,
+   72.95,
+   74.766,
    "Tizim sizni zararli dasturni"
   ],
   [
-   87.174,
-   89.7,
+   74.616,
+   76.79,
    "boshqarish sahifasiga olib o‘tadi."
   ],
   [
-   90.65,
-   93.811,
+   77.34,
+   80.02,
    "Ushbu sahifadagi ilova ishlamasa, «Ruxsatni"
   ],
   [
-   93.761,
-   96.343,
-   "olib tashlash» funksiyasini yoqing."
+   79.87,
+   82.55,
+   "olib tashlash» funksiyasini yoqib, pastdagi"
   ],
   [
-   97.293,
-   100.876,
-   "So‘ng pastdagi «Olib tashlash» tugmasini bosasiz."
+   82.4,
+   84.55,
+   "«Olib tashlash» tugmasini bosasiz."
   ],
   [
-   100.826,
-   104.986,
+   84.99,
+   88.04,
    "Shundan so‘ng zararli dastur telefoningizdan o‘chiriladi."
   ],
   [
-   105.736,
-   109.997,
-   "Xazna mobil ilovasining yana bir afzalligi shundaki, tizim"
+   88.65,
+   91.826,
+   "Xazna mobil ilovasining yana bir afzalligi shundaki,"
   ],
   [
-   109.947,
-   114.208,
-   "doimiy ravishda qurilmangizni tekshiradi va zararli dastur"
+   91.676,
+   94.677,
+   "tizim doimiy ravishda qurilmangizni tekshiradi va"
   ],
   [
-   114.158,
-   118.057,
-   "aniqlansa, sizga mana shunday ogohlantirish yuboradi."
+   94.527,
+   97.237,
+   "zararli dastur aniqlansa, sizga mana shunday"
   ],
   [
-   118.007,
-   120.525,
-   "Yuqorida ko‘rsatilganidek, virusni"
+   97.087,
+   100.205,
+   "ogohlantirish yuboradi va yuqorida ko‘rsatilganidek"
   ],
   [
-   120.475,
-   123.357,
-   "o‘zingiz o‘chirib tashlashingiz mumkin."
+   100.055,
+   102.94,
+   "virusni o‘zingiz o‘chirib tashlashingiz mumkin."
+  ],
+  [
+   103.57,
+   107.329,
+   "Endi Xazna orqali moliyaviy operatsiyalaringizni oson va"
+  ],
+  [
+   107.179,
+   110.1,
+   "xavfsiz tarzda amalga oshirishingiz mumkin."
   ]
  ],
- "total": 138.6,
- "seg_len": [
-  7.214285714285714,
-  14.857142857142858,
-  17.0,
-  16.214285714285715,
-  9.428571428571429,
-  11.285714285714286,
-  5.642857142857143,
-  7.642857142857143,
-  17.571428571428573,
-  7.142857142857143
+ "voff": 7.0,
+ "total": 117.36,
+ "blocks": [
+  [
+   7.0,
+   9.18
+  ],
+  [
+   9.6,
+   13.79
+  ],
+  [
+   14.65,
+   22.25
+  ],
+  [
+   22.81,
+   27.18
+  ],
+  [
+   27.95,
+   41.52
+  ],
+  [
+   42.31,
+   57.17
+  ],
+  [
+   58.1,
+   66.3
+  ],
+  [
+   67.15,
+   72.58
+  ],
+  [
+   73.0,
+   76.69
+  ],
+  [
+   77.39,
+   84.45
+  ],
+  [
+   85.04,
+   87.94
+  ],
+  [
+   88.7,
+   102.84
+  ],
+  [
+   103.62,
+   110.0
+  ]
  ]
 }

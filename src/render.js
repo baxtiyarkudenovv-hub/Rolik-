@@ -12,10 +12,10 @@ const [audio, out, fps = 30] = process.argv.slice(2);
   const total = await pg.evaluate(() => window.TOTAL);
   const n = Math.round(total * fps);
   const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-',
-    '-i', audio, '-c:v', 'libx264', '-preset', 'medium', '-crf', '21', '-maxrate', '7000k', '-bufsize', '10000k', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k',
+    '-i', audio, '-c:v', 'libx264', '-preset', 'medium', '-crf', '21', '-maxrate', '7000k', '-bufsize', '10000k', '-pix_fmt', 'yuv420p', '-af', 'loudnorm=I=-14:TP=-1.5:LRA=11', '-ar', '48000', '-c:a', 'aac', '-b:a', '192k',
     '-shortest', '-movflags', '+faststart', out], { stdio: ['pipe', 'inherit', 'inherit'] });
   for (let i = 0; i < n; i++) {
-    await pg.evaluate(t => draw(t), i / fps);
+    await pg.evaluate(async t => { await prepare(t); draw(t); }, i / fps);
     const buf = await pg.screenshot({ type: 'jpeg', quality: 95 });
     if (!ff.stdin.write(buf)) await new Promise(r => ff.stdin.once('drain', r));
     if (i % 300 === 0) console.log(`frame ${i}/${n}`);
