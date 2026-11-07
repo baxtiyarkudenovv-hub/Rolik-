@@ -206,11 +206,15 @@ subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', os.path.join(ROOT, '..', 'a
 with wave.open(tmp) as w: v = np.frombuffer(w.readframes(w.getnframes()), '<i2').astype(float) / 32768
 os.remove(tmp)
 vox = np.zeros(N); i0 = int(TL['voff'] * SR); vox[i0:i0 + len(v)] = v[:N - i0]
-duck = np.ones(N)
-for a, b in TL['blocks']: duck[int((a - .15) * SR):int((b + .2) * SR)] = .5
+duck = np.full(N, .62)                       # SFX level without narration
+for a, b in TL['blocks']: duck[int((a - .2) * SR):int((b + .25) * SR)] = .22   # well under the narrator
 k = int(.12 * SR); duck = np.convolve(duck, np.ones(k) / k, 'same')
 sfx = bus / (np.max(np.abs(bus)) + 1e-9) * .8
-out = sfx * duck[:, None] * 1.0 + vox[:, None] * .95
+out = sfx * duck[:, None] + vox[:, None] * .95
+_m = np.zeros(N, bool)
+for a_, b_ in TL['blocks']: _m[int(a_ * SR):int(b_ * SR)] = True
+_r = lambda z: 20 * np.log10(np.sqrt(np.mean(z ** 2)) + 1e-12)
+print('during narration: voice RMS %.1f dB, SFX RMS %.1f dB' % (_r(vox[_m] * .95), _r((sfx * duck[:, None])[_m].mean(1))))
 out = out[:int(T * SR)]
 fl = int(1.2 * SR); out[-fl:] *= np.linspace(1, 0, fl)[:, None]
 out = np.tanh(out * 1.1) / np.tanh(1.1) * .97

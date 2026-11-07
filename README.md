@@ -1,13 +1,13 @@
 # Xalq banki · Xazna Antifrod — animatsion rolik (16:9)
 
-Joriy versiya: `video/xalqbank_xazna_antifrod_v3.mp4` (1920×1080, 30 fps, ~117 s).
+Joriy versiya: `video/xalqbank_xazna_antifrod_v4.mp4` (1920×1080, 30 fps, ~117 s).
 Diktor ovozi `assets/media/diktor.wav`, fon musiqasisiz, zamonaviy kinematik SFX bilan.
 
 ## v3 tuzilishi
 | Fayl | Vazifasi |
 |---|---|
 | `src/rolik.html` | Sahna sahifasi (`lib.js` + `v3.js`) |
-| `src/v3.js` | Oq-tilla fon, 3D proyeksiya (telefon, kartalar, kub o‘tish), kinetik matn, sahnalar |
+| `src/v3.js` | Oq + to‘q ko‘k + to‘q yashil fon, 3D proyeksiya (telefon, kartalar, kub o‘tish), kinetik matn, sahnalar |
 | `src/lib.js` | Ikonalar va ilova ekranlari |
 | `src/build_timeline.py` | Diktor ovozidagi pauzalar asosida sahna vaqtlari va subtitrlar → `timeline.json` |
 | `src/sfx.py` | Tovush dizayni (whoosh, braam, riser, impact, glitch, UI) + diktor miksi |
