@@ -388,7 +388,7 @@ function sLogo(lt, d) {
   }
   const m = eio(p(lt, 2.7, 3.6));
   const ecx = lerp(W / 2, EFX, m), ecy = lerp(H / 2 - 10, EFY, m), es = lerp(1.35, LS, m);
-  rays(ecx, ecy, p(lt, IMP, IMP + .5) * (1 - .55 * m), lt);
+  // (sunburst removed) rays(ecx, ecy, p(lt, IMP, IMP + .5) * (1 - .55 * m), lt);
   const glow = 60 * (1 - p(lt, IMP, IMP + 1.2)) + 10;
   PIECES.forEach(([n, ox, oy, or, zs], j) => {
     const k = p(lt, .8 + j * .15, IMP); if (k <= 0) return;
@@ -709,7 +709,7 @@ function s7(lt, d) {
 function sEnd(lt, d) {
   bg(lt + 40);
   const k = eo(p(lt, 0, 1)), s = .52, lw = 1690 * s, lh = 440 * s, lx = 150, ly = H / 2 - 50 - lh / 2;
-  rays(lx + 175 * s, ly + 220 * s, k * .6, lt);
+  // (sunburst removed) rays(lx + 175 * s, ly + 220 * s, k * .6, lt);
   x.save(); x.globalAlpha = k; x.drawImage(LOGO, lx + (1 - k) * -60, ly, lw, lh); x.restore();
   reflection(LOGO, lx, ly, lw, lh, .12 * k);
   const dk = eio(p(lt, .4, 1.1));
