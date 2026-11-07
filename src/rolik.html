@@ -5,10 +5,11 @@
 <script>
 const W = 1920, H = 1080;
 const cv = document.getElementById('c');
-const x = cv.getContext('2d');
+const MAIN = cv.getContext('2d');
+let x = MAIN;
 const F = 'Inter, "DejaVu Sans", sans-serif';
 const C = {
-  bg1: '#030b1f', bg2: '#0a2459', acc: '#19d38b', acc2: '#2ec5ff', red: '#ff3b5c',
+  bg1: '#020f17', bg2: '#06394a', acc: '#19d38b', acc2: '#2ec5ff', red: '#ff3b5c',
   yel: '#ffc542', white: '#ffffff', mut: '#a9bde3', card: '#0f2a5c'
 };
 
@@ -348,7 +349,6 @@ function s1(lt, d) {
     warnTri(cx - 385, 896, .4, '#fff', k2);
     txt('MIJOZLAR UCHUN OGOHLANTIRISH!', cx + 45, 893, 40, '#fff', { a: p(lt, 3.4, 3.9), w: 800, ls: 2 });
   }
-  atxt('Mijozlarimizni kiberxavfsizlikdan himoya qilamiz', cx, 990, 30, C.mut, lt, 4.2, { w: 500 });
 }
 
 // 2. Threat
@@ -372,7 +372,7 @@ function s2(lt, d) {
   const hx = 1650, hy = 820;
   hacker(hx, hy, .9, eo(p(lt, 3.5, 4.5)), lt);
   const icons = [cardIcon, keyIcon, pinIcon, userIcon];
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < Math.floor((d - 5) / .45); i++) {
     const st = 4 + i * .45, k = p(lt, st, st + 1.6);
     if (k <= 0 || k >= 1) continue;
     const e = eio(k);
@@ -390,7 +390,8 @@ function s2(lt, d) {
   atxt('ENG KENG TARQALGAN USUL', 1000, 150, 26, C.red, lt, .3, { al: 'left', w: 800, ls: 4 });
   const lines = ['Smartfonga zararli dastur', 'o‘rnatib, ma’lumotlarni', 'o‘g‘irlashga urinish'];
   lines.forEach((l, i) => atxt(l, 1000, 215 + i * 66, 54, '#fff', lt, .5 + i * .15, { al: 'left', w: 800 }));
-  const k = eo(p(lt, 6, 6.7));
+  const kb0 = Math.max(6, d * .55);
+  const k = eo(p(lt, kb0, kb0 + .7));
   if (k > 0) {
     x.save(); x.globalAlpha = k;
     x.fillStyle = 'rgba(255,59,92,.15)'; x.strokeStyle = C.red; x.lineWidth = 2;
@@ -400,7 +401,7 @@ function s2(lt, d) {
     x.save(); x.globalAlpha = k; x.strokeStyle = C.red; x.lineWidth = 5;
     x.beginPath(); x.ellipse(1060, 500, 30, 16, 0, 0, 7); x.stroke();
     x.beginPath(); x.moveTo(1030, 525); x.lineTo(1090, 475); x.stroke(); x.restore();
-    atxt('Foydalanuvchi buni bilmay ham qoladi!', 1115, 500, 34, '#fff', lt, 6.1, { al: 'left', w: 700 });
+    atxt('Foydalanuvchi buni bilmay ham qoladi!', 1115, 500, 34, '#fff', lt, kb0 + .1, { al: 'left', w: 700 });
   }
 }
 
@@ -443,7 +444,7 @@ function s3(lt, d) {
     ['Mijozlarga', 'tushuntiriladi', C.yel],
   ];
   cards.forEach((cd, i) => {
-    const st = 1.5 + i * .5, kk = back(p(lt, st, st + .7));
+    const st = d * .2 + i * .6, kk = back(p(lt, st, st + .7));
     if (kk <= 0) return;
     const X = 960 + i * 300, Y = 560;
     x.save(); x.translate(X + 135, Y + 120); x.scale(kk, kk); x.translate(-X - 135, -Y - 120);
@@ -461,13 +462,13 @@ function s3(lt, d) {
     x.restore();
   });
   // ticker
-  const tk = p(lt, 3, 3.6);
+  const tk = p(lt, d * .55, d * .55 + .6);
   if (tk > 0) {
     x.save(); x.globalAlpha = tk;
     x.fillStyle = 'rgba(25,211,139,.12)'; rr(960, 860, 870, 70, 35); x.fill();
     x.fillStyle = C.acc; x.beginPath(); x.arc(1000, 895, 10 + Math.sin(lt * 8) * 3, 0, 7); x.fill();
     x.restore();
-    ttxt('Firibgarlik holatlari bo‘yicha mijozlar ogohlantiriladi', 1030, 895, 26, '#fff', lt, 3.3, 40, { al: 'left', w: 600 });
+    ttxt('Firibgarlik holatlari bo‘yicha mijozlar ogohlantiriladi', 1030, 895, 26, '#fff', lt, d * .55 + .3, 40, { al: 'left', w: 600 });
   }
 }
 
@@ -475,8 +476,8 @@ function s3(lt, d) {
 function s4(lt, d) {
   bg(lt);
   const px = 560, py = 560;
-  const scanY = p(lt, 1, 3);
-  const det = p(lt, 3, 3.4);
+  const scanY = p(lt, d * .12, d * .32);
+  const det = p(lt, d * .45, d * .45 + .4);
   phone(px, py, .95, (sx, sy, sw, sh) => {
     appHome(sx, sy, sw, sh, lt);
     if (scanY > 0 && scanY < 1) {
@@ -499,7 +500,7 @@ function s4(lt, d) {
       txt('Shubhali dastur', sx + 120, by + 72, 24, '#0d2a55', { al: 'left', w: 800 });
       txt('aniqlandi!', sx + 120, by + 102, 24, C.red, { al: 'left', w: 800 });
       // locked transfer
-      const lk = back(p(lt, 4.2, 4.8));
+      const lk = back(p(lt, d * .7, d * .7 + .6));
       if (lk > 0) {
         x.save(); x.translate(sx + sw / 2, sy + 520); x.scale(lk, lk);
         x.fillStyle = '#fff'; rr(-150, -110, 300, 220, 26); x.fill();
@@ -512,9 +513,9 @@ function s4(lt, d) {
   }, det > 0 ? C.yel : C.acc);
   if (scanY > 0 && scanY < 1) txt('Qurilma tekshirilmoqda… ' + Math.floor(scanY * 100) + '%', px, 1010, 28, C.acc, { w: 700 });
   const end = headline(lt, 'Xazna mobil ilovasi', 'Maxsus Antifrod tizimi ishga tushirildi', C.acc, 1000, 260, .3);
-  bullet(lt, 1.6, 1000, end + 70, 'Shubhali dasturlarni aniqlaydi');
-  bullet(lt, 3.2, 1000, end + 150, 'Bu haqida darhol xabar beradi', C.acc2);
-  bullet(lt, 4.4, 1000, end + 230, 'Ayrim amaliyotlarni vaqtincha cheklaydi', C.yel);
+  bullet(lt, d * .15, 1000, end + 70, 'Shubhali dasturlarni aniqlaydi');
+  bullet(lt, d * .45, 1000, end + 150, 'Bu haqida darhol xabar beradi', C.acc2);
+  bullet(lt, d * .7, 1000, end + 230, 'Ayrim amaliyotlarni vaqtincha cheklaydi', C.yel);
 }
 
 // 5. Steps
@@ -524,7 +525,7 @@ const STEPS = [
   ['«Ruxsatni olib tashlash» funksiyasini yoqing', 'Ilova ishlamasa — ruxsatlarni o‘chiring'],
   ['Pastdagi «Olib tashlash» tugmasini bosing', 'Zararli dastur telefoningizdan o‘chiriladi'],
 ];
-const SD = 5.6;
+let STEP_D = [9, 10, 6, 7.5];
 function transferScreen(sx, sy, sw, sh, lt) {
   appHeader(sx, sy, sw, 'Pul o‘tkazmasi');
   x.fillStyle = '#fff'; rr(sx + 24, sy + 180, sw - 48, 110, 18); x.fill();
@@ -606,73 +607,73 @@ function managerScreen(sx, sy, sw, sh, lt, tog, delPress, removed) {
 }
 function s5(lt, d) {
   bg(lt);
-  const step = Math.min(3, Math.floor(lt / SD));
-  const st = lt - step * SD;
+  let step = 0, acc = 0;
+  while (step < 3 && lt >= acc + STEP_D[step]) { acc += STEP_D[step]; step++; }
+  const st = lt - acc, sd = STEP_D[step];
   const px = 560, py = 560;
   let fx = -999, fy = -999, fpress = 0, fa = 0;
+  let removedK = 0;
   phone(px, py, .95, (sx, sy, sw, sh) => {
     if (step === 0) {
+      const tp = sd * .35;
       transferScreen(sx, sy, sw, sh, lt);
-      const pr = p(st, 1.2, 1.6);
-      const mk = p(st, 1.8, 2.3);
+      const mk = p(st, tp + .6, tp + 1.1);
       if (mk > 0) warnModal(sx, sy, sw, sh, mk, 0);
-      fa = 1 - p(st, 1.8, 2.2); fpress = pr;
+      fa = p(st, sd * .1, sd * .1 + .4) * (1 - p(st, tp + .6, tp + 1)); fpress = p(st, tp, tp + .4);
       fx = sx + sw / 2 + 30; fy = sy + sh - 92;
     } else if (step === 1) {
-      const out = p(st, 2.6, 3.2);
-      if (out < 1) { transferScreen(sx, sy, sw, sh, lt); warnModal(sx, sy, sw, sh, 1, p(st, 1.4, 1.8)); }
+      const tp = sd * .3, to = sd * .55;
+      const out = p(st, to, to + .6);
+      if (out < 1) { transferScreen(sx, sy, sw, sh, lt); warnModal(sx, sy, sw, sh, 1, p(st, tp, tp + .4)); }
       if (out > 0) {
         x.save(); x.translate((1 - eio(out)) * sw, 0);
         x.fillStyle = '#eef2f9'; x.fillRect(sx, sy, sw, sh);
         managerScreen(sx, sy, sw, sh, lt, 0, 0, 0); x.restore();
       }
-      fa = p(st, .3, .8) * (1 - p(st, 2.2, 2.6)); fpress = p(st, 1.4, 1.8);
+      fa = p(st, sd * .08, sd * .08 + .5) * (1 - p(st, tp + .8, tp + 1.2)); fpress = p(st, tp, tp + .4);
       fx = sx + sw / 2 + 40; fy = sy + sh / 2 + 135;
     } else if (step === 2) {
+      const tp = sd * .4;
       x.fillStyle = '#eef2f9'; x.fillRect(sx, sy, sw, sh);
-      const tg = eio(p(st, 1.6, 2));
+      const tg = eio(p(st, tp + .2, tp + .6));
       managerScreen(sx, sy, sw, sh, lt, tg, 0, 0);
-      fa = p(st, .4, .9) * (1 - p(st, 2.6, 3)); fpress = p(st, 1.4, 1.8);
+      fa = p(st, sd * .12, sd * .12 + .5) * (1 - p(st, tp + 1, tp + 1.4)); fpress = p(st, tp, tp + .4);
       fx = sx + sw - 82; fy = sy + 395;
-      // highlight
-      if (st > 2) { x.strokeStyle = `rgba(19,179,122,${.5 + .5 * Math.sin(lt * 8)})`; x.lineWidth = 4; rr(sx + 20, sy + 346, sw - 40, 98, 22); x.stroke(); }
+      if (st > tp + .6) { x.strokeStyle = `rgba(19,179,122,${.5 + .5 * Math.sin(lt * 8)})`; x.lineWidth = 4; rr(sx + 20, sy + 346, sw - 40, 98, 22); x.stroke(); }
     } else {
+      const tp = sd * .3;
+      removedK = p(st, tp + .5, tp + 1.9);
       x.fillStyle = '#eef2f9'; x.fillRect(sx, sy, sw, sh);
-      managerScreen(sx, sy, sw, sh, lt, 1, p(st, 1.3, 1.7), p(st, 1.8, 3.2));
-      fa = p(st, .3, .8) * (1 - p(st, 1.8, 2.2)); fpress = p(st, 1.3, 1.7);
+      managerScreen(sx, sy, sw, sh, lt, 1, p(st, tp, tp + .4), removedK);
+      fa = p(st, sd * .08, sd * .08 + .5) * (1 - p(st, tp + .5, tp + .9)); fpress = p(st, tp, tp + .4);
       fx = sx + sw / 2 + 30; fy = sy + sh - 92;
     }
-    if (fa > 0) {
-      const slide = (1 - fa) * 120;
-      finger(fx, fy + slide, 1, fpress, fa);
-    }
-  }, step === 3 && st > 2 ? C.acc : (step < 2 ? C.red : C.acc2));
-  // step list
+    if (fa > 0) finger(fx, fy + (1 - fa) * 120, 1, fpress, fa);
+  }, step === 3 && removedK > .5 ? C.acc : (step < 2 ? C.red : C.acc2));
   atxt('VIRUSNI O‘CHIRISH — 4 QADAM', 1000, 180, 26, C.acc, lt, .2, { al: 'left', w: 800, ls: 4 });
   STEPS.forEach((s, i) => {
-    const Y = 290 + i * 175;
+    const Y = 290 + i * 160;
     const appear = eo(p(lt, .3 + i * .2, .9 + i * .2));
     if (appear <= 0) return;
-    const active = i === step, done = i < step || (i === 3 && step === 3 && st > 3);
+    const active = i === step, done = i < step || (i === 3 && step === 3 && removedK >= 1);
     x.save(); x.globalAlpha = appear * (active ? 1 : .45);
     x.translate((1 - appear) * 60, 0);
     if (active) {
       x.fillStyle = 'rgba(25,211,139,.12)'; x.strokeStyle = C.acc; x.lineWidth = 2;
-      rr(990, Y - 70, 840, 150, 24); x.fill(); x.stroke();
+      rr(990, Y - 66, 840, 138, 24); x.fill(); x.stroke();
     }
-    x.fillStyle = done ? C.acc : (active ? C.acc : 'rgba(255,255,255,.15)');
+    x.fillStyle = done || active ? C.acc : 'rgba(255,255,255,.15)';
     x.beginPath(); x.arc(1050, Y, 34, 0, 7); x.fill();
     if (done) check(1050, Y + 2, 18, 1, '#04102a', 7);
     else txt(String(i + 1), 1050, Y + 2, 34, active ? '#04102a' : '#fff', { w: 900 });
     txt(s[0], 1110, Y - 18, 32, '#fff', { al: 'left', w: 800 });
     txt(s[1], 1110, Y + 26, 23, C.mut, { al: 'left', w: 500 });
     x.restore();
-    if (i < 3) { x.fillStyle = 'rgba(255,255,255,.15)'; x.fillRect(1048, Y + 40, 4, 95 * appear); }
+    if (i < 3) { x.fillStyle = 'rgba(255,255,255,.15)'; x.fillRect(1048, Y + 40, 4, 80 * appear); }
   });
-  // progress bar
-  const prog = cl(lt / (SD * 4));
-  x.fillStyle = 'rgba(255,255,255,.1)'; rr(1000, 1000, 820, 10, 5); x.fill();
-  x.fillStyle = C.acc; rr(1000, 1000, 820 * prog, 10, 5); x.fill();
+  const prog = cl(lt / d);
+  x.fillStyle = 'rgba(255,255,255,.1)'; rr(1000, 900, 820, 10, 5); x.fill();
+  x.fillStyle = C.acc; rr(1000, 900, 820 * prog, 10, 5); x.fill();
 }
 
 // 6. Continuous scanning
@@ -687,9 +688,9 @@ function s6(lt, d) {
   phone(px, py, .9, (sx, sy, sw, sh) => {
     appHome(sx, sy, sw, sh, lt);
     const notes = [
-      [.6, 'Qurilma tekshirildi', 'Tahdid topilmadi', C.acc],
-      [2.4, 'Qurilma tekshirildi', 'Hammasi xavfsiz', C.acc],
-      [4.2, 'Diqqat! Zararli dastur', 'Uni hoziroq o‘chiring', C.red],
+      [d * .1, 'Qurilma tekshirildi', 'Tahdid topilmadi', C.acc],
+      [d * .3, 'Qurilma tekshirildi', 'Hammasi xavfsiz', C.acc],
+      [d * .55, 'Diqqat! Zararli dastur', 'Uni hoziroq o‘chiring', C.red],
     ];
     notes.forEach((n, i) => {
       const k = back(p(lt, n[0], n[0] + .5)) * (1 - p(lt, n[0] + 1.6, n[0] + 1.9) * (i < 2 ? 1 : 0));
@@ -705,9 +706,9 @@ function s6(lt, d) {
   }, C.acc2);
   shield(px + 210, py + 320, .55 * back(p(lt, .3, 1)), C.acc, 1, lt);
   const end = headline(lt, 'Yana bir afzallik', 'Tizim qurilmangizni doimiy ravishda tekshiradi', C.acc2, 1000, 280, .3);
-  bullet(lt, 2, 1000, end + 70, 'Zararli dastur aniqlansa — ogohlantiradi', C.acc2);
-  bullet(lt, 3.4, 1000, end + 150, 'Virusni o‘zingiz o‘chira olasiz', C.acc);
-  bullet(lt, 4.6, 1000, end + 230, 'Mablag‘laringiz himoyada', C.yel);
+  bullet(lt, d * .15, 1000, end + 70, 'Zararli dastur aniqlansa — ogohlantiradi', C.acc2);
+  bullet(lt, d * .42, 1000, end + 150, 'Virusni o‘zingiz o‘chira olasiz', C.acc);
+  bullet(lt, d * .7, 1000, end + 230, 'Mablag‘laringiz himoyada', C.yel);
 }
 
 // 7. Outro
@@ -741,39 +742,244 @@ function s7(lt, d) {
   }
 }
 
-const SCENES = [[s1, 7], [s2, 10], [s3, 8], [s4, 8], [s5, SD * 4 + 1.2], [s6, 8], [s7, 8]];
-const TOTAL = SCENES.reduce((a, s) => a + s[1], 0);
-window.TOTAL = TOTAL;
-function draw(t) {
-  x.setTransform(1, 0, 0, 1, 0, 0);
-  x.globalAlpha = 1; x.clearRect(0, 0, W, H);
-  let acc = 0;
-  for (let i = 0; i < SCENES.length; i++) {
-    const [fn, d] = SCENES[i];
-    if (t < acc + d || i === SCENES.length - 1) {
-      const lt = t - acc;
-      x.save();
-      // zoom-in transition at start
-      const tin = i === 0 ? 1 : eo(p(lt, 0, .6));
-      const z = 1.08 - .08 * tin;
-      x.translate(W / 2, H / 2); x.scale(z, z); x.translate(-W / 2, -H / 2);
-      fn(lt, d);
-      x.restore();
-      // fade from/to black
-      const fin = i === 0 ? p(lt, 0, .5) : p(lt, 0, .35);
-      const fout = i === SCENES.length - 1 ? 1 - p(lt, d - .8, d) : 1 - p(lt, d - .35, d);
-      const a = 1 - Math.min(fin, fout);
-      if (a > 0) { x.fillStyle = `rgba(2,6,18,${a})`; x.fillRect(0, 0, W, H); }
-      // flash on scene change
-      if (i > 0 && lt < .25) { x.fillStyle = `rgba(46,197,255,${(1 - lt / .25) * .18})`; x.fillRect(0, 0, W, H); }
-      break;
-    }
-    acc += d;
+/* ---------- logo assets ---------- */
+const IMG = {};
+['emblem_top', 'emblem_left', 'emblem_right', 'wordmark', 'since'].forEach(n => { const im = new Image(); im.src = '../assets/' + n + '.png'; IMG[n] = im; });
+const mk = () => { const c = document.createElement('canvas'); c.width = W; c.height = H; return c; };
+const CA = mk(), CB = mk(), TMP = mk();
+const LOGO = document.createElement('canvas'); LOGO.width = 1690; LOGO.height = 440;
+window.assetsReady = Promise.all(Object.values(IMG).map(im => im.decode())).then(() => {
+  const g = LOGO.getContext('2d');
+  ['emblem_top', 'emblem_left', 'emblem_right'].forEach(n => g.drawImage(IMG[n], 0, 0));
+  g.drawImage(IMG.wordmark, 450, 10); g.drawImage(IMG.since, 450, 10);
+});
+const LS = .82;
+const LTL = { x: W / 2 - 1690 * LS / 2, y: H / 2 - 30 - 440 * LS / 2 };
+const EFX = LTL.x + 175 * LS, EFY = LTL.y + 220 * LS;
+
+function rays(cx, cy, a, lt, col = '120,255,220') {
+  if (a <= 0) return;
+  x.save(); x.globalAlpha *= a * .3; x.translate(cx, cy); x.rotate(lt * .12);
+  for (let i = 0; i < 18; i++) {
+    x.rotate(Math.PI * 2 / 18);
+    const g = x.createLinearGradient(0, 0, 1200, 0);
+    g.addColorStop(0, `rgba(${col},.9)`); g.addColorStop(1, `rgba(${col},0)`);
+    x.fillStyle = g; x.beginPath(); x.moveTo(0, 0); x.lineTo(1200, -70); x.lineTo(1200, 70); x.fill();
+  }
+  x.restore();
+  glowCircle(cx, cy, 520, `rgba(${col},.3)`, a);
+}
+function brandBg(lt) {
+  const g = x.createRadialGradient(W / 2, H / 2, 0, W / 2, H / 2, H * 1.1);
+  g.addColorStop(0, '#0d5a60'); g.addColorStop(.55, '#04272d'); g.addColorStop(1, '#010a0d');
+  x.fillStyle = g; x.fillRect(0, 0, W, H);
+  for (let i = 0; i < 50; i++) {
+    const px = rnd(i + 500) * W + Math.sin(lt * .4 + i) * 30, py = (rnd(i + 600) * H - lt * (10 + rnd(i) * 25) + H) % H;
+    x.fillStyle = `rgba(160,255,230,${.1 + .25 * Math.abs(Math.sin(lt * .8 + i))})`;
+    x.beginPath(); x.arc(px, py, 1 + rnd(i + 3) * 2.2, 0, 7); x.fill();
   }
 }
+function flareH(cx, cy, a, len = 1400) {
+  if (a <= 0) return;
+  x.save(); x.globalCompositeOperation = 'lighter'; x.globalAlpha = a;
+  const g = x.createLinearGradient(cx - len, 0, cx + len, 0);
+  g.addColorStop(0, 'rgba(80,200,255,0)'); g.addColorStop(.5, 'rgba(200,250,255,.9)'); g.addColorStop(1, 'rgba(80,200,255,0)');
+  x.fillStyle = g; x.fillRect(cx - len, cy - 3, len * 2, 6);
+  x.globalAlpha = a * .5; x.fillRect(cx - len, cy - 14, len * 2, 28);
+  glowCircle(cx, cy, 160, 'rgba(220,255,255,.9)', a);
+  x.restore();
+}
+function shimmerLogo(tlx, tly, s, k) {
+  if (k <= 0 || k >= 1) return;
+  const t = TMP.getContext('2d');
+  t.setTransform(1, 0, 0, 1, 0, 0); t.globalCompositeOperation = 'source-over'; t.clearRect(0, 0, W, H);
+  t.drawImage(LOGO, tlx, tly, 1690 * s, 440 * s);
+  t.globalCompositeOperation = 'source-in';
+  const bx = lerp(tlx - 300, tlx + 1690 * s + 300, k);
+  const g = t.createLinearGradient(bx - 160, 0, bx + 160, 0);
+  g.addColorStop(0, 'rgba(25,211,139,0)'); g.addColorStop(.5, 'rgba(70,240,190,1)'); g.addColorStop(1, 'rgba(25,211,139,0)');
+  t.fillStyle = g; t.fillRect(0, 0, W, H);
+  x.drawImage(TMP, 0, 0);
+}
+const PIECES = [['emblem_top', 0, -950, -1.3], ['emblem_left', -1100, 700, 1.5], ['emblem_right', 1100, 700, -1.5]];
+function sLogo(lt, d) {
+  brandBg(lt);
+  const IMP = 1.9;
+  // converging light streaks
+  for (let i = 0; i < 140; i++) {
+    const a = rnd(i) * 6.283, r0 = 700 + rnd(i + 11) * 700;
+    const k = eio(p(lt, rnd(i + 9) * .7, IMP));
+    if (k <= 0 || k >= 1) continue;
+    const r = r0 * (1 - k), tail = 30 + 160 * Math.sin(k * Math.PI);
+    x.strokeStyle = `rgba(150,255,225,${.6 * Math.sin(k * Math.PI)})`; x.lineWidth = 2;
+    x.beginPath(); x.moveTo(W / 2 + Math.cos(a) * r, H / 2 + Math.sin(a) * r); x.lineTo(W / 2 + Math.cos(a) * (r + tail), H / 2 + Math.sin(a) * (r + tail)); x.stroke();
+  }
+  const m = eio(p(lt, 2.7, 3.6));
+  const ecx = lerp(W / 2, EFX, m), ecy = lerp(H / 2 - 10, EFY, m), es = lerp(1.35, LS, m);
+  rays(ecx, ecy, p(lt, IMP, IMP + .5) * (1 - .5 * m), lt);
+  // emblem pieces
+  const glow = 70 * (1 - p(lt, IMP, IMP + 1.2)) + 18;
+  PIECES.forEach(([n, ox, oy, or], j) => {
+    const k = p(lt, .8 + j * .15, IMP);
+    if (k <= 0) return;
+    const e = k * k * (3 - 2 * k);
+    for (let g = 5; g >= 0; g--) {
+      const kk = Math.max(0, e - g * .045 * (1 - e) * 2);
+      x.save(); x.globalAlpha = g ? .14 * (1 - e) : 1;
+      x.translate(ecx + ox * (1 - kk), ecy + oy * (1 - kk)); x.rotate(or * (1 - kk) * (1 - kk)); x.scale(es, es);
+      if (!g) { x.shadowColor = '#6dffd8'; x.shadowBlur = glow; }
+      x.drawImage(IMG[n], -175, -220); x.restore();
+    }
+  });
+  // impact: flash + shockwaves + flare
+  if (lt > IMP) {
+    for (let r = 0; r < 2; r++) {
+      const k = eo(p(lt, IMP + r * .15, IMP + 1.1 + r * .15));
+      if (k > 0 && k < 1) { x.strokeStyle = `rgba(170,255,230,${(1 - k) * .8})`; x.lineWidth = 10 * (1 - k) + 1; x.beginPath(); x.arc(W / 2, H / 2 - 10, 120 + k * 1100, 0, 7); x.stroke(); }
+    }
+    flareH(W / 2, H / 2 - 10, 1 - p(lt, IMP, IMP + .9));
+    const f = 1 - p(lt, IMP, IMP + .35);
+    if (f > 0) { x.fillStyle = `rgba(230,255,250,${f * .85})`; x.fillRect(0, 0, W, H); }
+  }
+  // wordmark reveal with light bar
+  const rv = eio(p(lt, 3.2, 4.2));
+  if (rv > 0) {
+    const wx = LTL.x + 450 * LS, wy = LTL.y + 10 * LS, ww = 1240 * LS;
+    x.save(); x.beginPath(); x.rect(wx - 20, 0, (ww + 40) * rv, H); x.clip();
+    x.shadowColor = '#6dffd8'; x.shadowBlur = 18;
+    x.drawImage(IMG.wordmark, wx, wy, ww, 430 * LS); x.restore();
+    const ex = wx - 20 + (ww + 40) * rv, ba = Math.sin(rv * Math.PI);
+    if (ba > .01) {
+      x.save(); x.globalCompositeOperation = 'lighter';
+      const g = x.createLinearGradient(ex - 60, 0, ex + 20, 0);
+      g.addColorStop(0, 'rgba(120,255,220,0)'); g.addColorStop(1, `rgba(220,255,250,${ba})`);
+      x.fillStyle = g; x.fillRect(ex - 60, wy - 40, 80, 430 * LS + 80); x.restore();
+      flareH(ex, wy + 160 * LS, ba * .6, 500);
+    }
+  }
+  const sk = eo(p(lt, 4.1, 4.8));
+  if (sk > 0) { x.save(); x.globalAlpha = sk; x.drawImage(IMG.since, LTL.x + 450 * LS, LTL.y + 10 * LS + (1 - sk) * 25, 1240 * LS, 430 * LS); x.restore(); }
+  shimmerLogo(LTL.x, LTL.y, LS, p(lt, 4.9, 5.9));
+}
+function sEnd(lt, d) {
+  brandBg(lt + 50);
+  rays(EFX, EFY, eo(p(lt, 0, 1)) * .7, lt);
+  const k = eo(p(lt, .2, 1.1));
+  x.save(); x.globalAlpha = k; x.translate(W / 2, H / 2); const z = .9 + .1 * k; x.scale(z, z); x.translate(-W / 2, -H / 2);
+  x.shadowColor = '#6dffd8'; x.shadowBlur = 22;
+  x.drawImage(LOGO, LTL.x, LTL.y, 1690 * LS, 440 * LS); x.restore();
+  shimmerLogo(LTL.x, LTL.y, LS, p(lt, 1.2, 2.4));
+  const k2 = eo(p(lt, 1.6, 2.3));
+  if (k2 > 0) {
+    x.save(); x.globalAlpha = k2;
+    x.fillStyle = 'rgba(255,255,255,.1)'; rr(W / 2 - 330, 820, 660, 84, 42); x.fill();
+    x.fillStyle = C.acc; x.beginPath(); x.arc(W / 2 - 280, 862, 12, 0, 7); x.fill();
+    x.restore();
+    txt('Xazna mobil ilovasi bilan xavfsiz', W / 2 + 20, 862, 32, '#fff', { a: k2, w: 700 });
+  }
+}
+
+/* ---------- timeline ---------- */
+const FN = { logo: sLogo, s1, s2, s3, s4, s5, s6, s7, end: sEnd };
+let TL = { scenes: [['logo', 6.5], ['s1', 7.5], ['s2', 14], ['s3', 16], ['s4', 16], ['s5', 32.5], ['s6', 16], ['s7', 8.5], ['end', 5]], steps: [9, 10, 6, 7.5], subs: [] };
+let SC = [], TOTAL = 0;
+function setTimeline(tl) {
+  TL = tl; STEP_D = tl.steps; SC = []; let a = 0;
+  for (const [id, d] of tl.scenes) { SC.push({ fn: FN[id], d, s: a, id }); a += d; }
+  TOTAL = a; window.TOTAL = TOTAL;
+  return { total: TOTAL, starts: SC.map(s => [s.id, +s.s.toFixed(3)]) };
+}
+window.setTimeline = setTimeline;
+setTimeline(TL);
+const TRANS = ['zoom', 'glitch', 'wipe', 'iris', 'zoom', 'wipe', 'iris', 'zoom'];
+const TT = .45;
+
+function renderScene(i, lt, ctx) {
+  const prev = x; x = ctx.getContext('2d');
+  x.setTransform(1, 0, 0, 1, 0, 0); x.globalAlpha = 1; x.globalCompositeOperation = 'source-over';
+  x.clearRect(0, 0, W, H);
+  x.save();
+  const d = SC[i].d, z = 1 + .035 * cl(lt / d); // slow camera push-in
+  x.translate(W / 2, H / 2); x.scale(z, z); x.translate(-W / 2, -H / 2);
+  SC[i].fn(lt, d);
+  x.restore();
+  x = prev;
+}
+function drawScaled(c, s, a = 1, dx = 0) {
+  MAIN.globalAlpha = a; MAIN.drawImage(c, W / 2 - W * s / 2 + dx, H / 2 - H * s / 2, W * s, H * s); MAIN.globalAlpha = 1;
+}
+function compose(type, k) {
+  const m = MAIN; m.setTransform(1, 0, 0, 1, 0, 0); m.globalAlpha = 1; m.globalCompositeOperation = 'source-over';
+  m.fillStyle = '#000'; m.fillRect(0, 0, W, H);
+  if (type === 'zoom') {
+    if (k < .5) { const e = eio(k * 2); drawScaled(CA, 1 + e * .7); for (let j = 1; j < 5; j++) drawScaled(CA, 1 + e * .7 + j * .05 * e, .18); }
+    else { const e = 1 - eo((k - .5) * 2); drawScaled(CB, 1 + e * .5); for (let j = 1; j < 5; j++) drawScaled(CB, 1 + e * .5 + j * .05 * e, .18 * e); }
+    const f = 1 - Math.abs(k - .5) * 4; if (f > 0) { m.fillStyle = `rgba(220,255,250,${f * .9})`; m.fillRect(0, 0, W, H); }
+    x = MAIN; flareH(W / 2, H / 2, Math.max(0, 1 - Math.abs(k - .5) * 3));
+  } else if (type === 'glitch') {
+    const src = k < .5 ? CA : CB, amp = Math.sin(k * Math.PI), seed = Math.floor(k * 24);
+    m.drawImage(src, 0, 0);
+    for (let b = 0; b < 16; b++) {
+      const y0 = rnd(seed * 31 + b) * H, h = 20 + rnd(seed * 17 + b) * 90, off = (rnd(seed * 7 + b) - .5) * 260 * amp;
+      m.drawImage(src, 0, y0, W, h, off, y0, W, h);
+    }
+    m.globalCompositeOperation = 'screen';
+    drawScaled(src, 1, .35 * amp, 18 * amp); drawScaled(src, 1, .35 * amp, -18 * amp);
+    for (let b = 0; b < 6; b++) { m.fillStyle = b % 2 ? `rgba(255,40,90,${.35 * amp})` : `rgba(40,220,255,${.35 * amp})`; m.fillRect(0, rnd(seed * 13 + b) * H, W, 4 + rnd(b + seed) * 10); }
+    m.globalCompositeOperation = 'source-over';
+  } else if (type === 'wipe') {
+    const e = eio(k), lx = lerp(-500, W + 500, e), sl = 300;
+    m.drawImage(CA, 0, 0);
+    m.save(); m.beginPath(); m.moveTo(-600, 0); m.lineTo(lx + sl, 0); m.lineTo(lx - sl, H); m.lineTo(-600, H); m.closePath(); m.clip(); m.drawImage(CB, 0, 0); m.restore();
+    m.save(); m.globalCompositeOperation = 'lighter';
+    for (let j = 0; j < 3; j++) {
+      m.strokeStyle = j ? `rgba(46,197,255,${.25 / j})` : 'rgba(200,255,240,.95)'; m.lineWidth = j ? 40 * j : 8;
+      m.beginPath(); m.moveTo(lx + sl, 0); m.lineTo(lx - sl, H); m.stroke();
+    }
+    m.restore();
+  } else if (type === 'iris') {
+    const e = eio(k), r = e * 1250;
+    m.drawImage(CA, 0, 0);
+    m.save(); m.beginPath(); m.arc(W / 2, H / 2, r, 0, 7); m.clip(); m.drawImage(CB, 0, 0); m.restore();
+    m.save(); m.globalCompositeOperation = 'lighter';
+    m.strokeStyle = 'rgba(160,255,225,.9)'; m.lineWidth = 6; m.beginPath(); m.arc(W / 2, H / 2, r, 0, 7); m.stroke();
+    m.strokeStyle = 'rgba(25,211,139,.3)'; m.lineWidth = 40; m.stroke(); m.restore();
+  }
+}
+// film grain
+const GR = [0, 1, 2].map(i => { const c = document.createElement('canvas'); c.width = 480; c.height = 270; const g = c.getContext('2d'); const d = g.createImageData(480, 270); for (let j = 0; j < d.data.length; j += 4) { const v = rnd(j * .37 + i * 999) * 255; d.data[j] = d.data[j + 1] = d.data[j + 2] = v; d.data[j + 3] = 255; } g.putImageData(d, 0, 0); return c; });
+function subtitles(t) {
+  const s = TL.subs.find(s => t >= s[0] && t < s[1]);
+  if (!s) return;
+  const a = Math.min(p(t, s[0], s[0] + .15), 1 - p(t, s[1] - .15, s[1]));
+  x = MAIN; x.save(); x.globalAlpha = a;
+  x.font = `600 31px ${F}`; const w = x.measureText(s[2]).width;
+  x.fillStyle = 'rgba(0,8,14,.62)'; rr(W / 2 - w / 2 - 28, 1004, w + 56, 56, 16); x.fill();
+  x.restore();
+  txt(s[2], W / 2, 1033, 31, '#fff', { a, w: 600 });
+}
+function draw(t) {
+  x = MAIN; MAIN.setTransform(1, 0, 0, 1, 0, 0); MAIN.globalAlpha = 1; MAIN.globalCompositeOperation = 'source-over';
+  let i = SC.findIndex(s => t < s.s + s.d); if (i < 0) i = SC.length - 1;
+  const lt = t - SC[i].s, d = SC[i].d;
+  if (i > 0 && lt < TT) {
+    renderScene(i - 1, SC[i - 1].d + lt, CA); renderScene(i, lt, CB); compose(TRANS[i - 1], (lt + TT) / (2 * TT));
+  } else if (i < SC.length - 1 && lt > d - TT) {
+    renderScene(i, lt, CA); renderScene(i + 1, 0, CB); compose(TRANS[i], (lt - d + TT) / (2 * TT));
+  } else {
+    renderScene(i, lt, CA); MAIN.drawImage(CA, 0, 0);
+  }
+  x = MAIN;
+  subtitles(t);
+  MAIN.save(); MAIN.globalAlpha = .04; MAIN.globalCompositeOperation = 'overlay';
+  MAIN.drawImage(GR[Math.floor(t * 30) % 3], 0, 0, W, H); MAIN.restore();
+  const fa = 1 - Math.min(p(t, 0, .6), 1 - p(t, TOTAL - 1, TOTAL));
+  if (fa > 0) { MAIN.fillStyle = `rgba(0,0,0,${fa})`; MAIN.fillRect(0, 0, W, H); }
+}
 window.draw = draw;
-window.SCENE_STARTS = (() => { let a = 0; return SCENES.map(s => { const r = a; a += s[1]; return r; }); })();
 const q = new URLSearchParams(location.search);
-if (q.has('t')) document.fonts.ready.then(() => draw(+q.get('t')));
-else if (q.has('play')) { const t0 = performance.now(); (function loop() { draw(((performance.now() - t0) / 1000) % TOTAL); requestAnimationFrame(loop); })(); }
+window.assetsReady.then(() => document.fonts.ready).then(() => {
+  if (q.has('t')) draw(+q.get('t'));
+  else if (q.has('play')) { const t0 = performance.now(); (function loop() { draw(((performance.now() - t0) / 1000) % TOTAL); requestAnimationFrame(loop); })(); }
+});
 </script></body></html>

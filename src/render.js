@@ -7,11 +7,12 @@ const [audio, out, fps = 30] = process.argv.slice(2);
   const b = await chromium.launch();
   const pg = await b.newPage({ viewport: { width: 1920, height: 1080 } });
   await pg.goto('file://' + path.resolve(__dirname, 'rolik.html'));
-  await pg.evaluate(() => document.fonts.ready);
+  await pg.evaluate(() => window.assetsReady.then(() => document.fonts.ready));
+  const tl = require('./timeline.json'); console.log(await pg.evaluate(tl => setTimeline(tl), tl));
   const total = await pg.evaluate(() => window.TOTAL);
   const n = Math.round(total * fps);
   const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-',
-    '-i', audio, '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k',
+    '-i', audio, '-c:v', 'libx264', '-preset', 'medium', '-crf', '21', '-maxrate', '7000k', '-bufsize', '10000k', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k',
     '-shortest', '-movflags', '+faststart', out], { stdio: ['pipe', 'inherit', 'inherit'] });
   for (let i = 0; i < n; i++) {
     await pg.evaluate(t => draw(t), i / fps);
