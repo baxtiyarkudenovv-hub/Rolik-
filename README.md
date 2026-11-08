@@ -1,6 +1,6 @@
 # Xalq banki · Xazna Antifrod — animatsion rolik (16:9)
 
-Joriy versiya: `video/xalqbank_xazna_antifrod_v4.mp4` (1920×1080, 30 fps, ~117 s).
+Joriy versiya: `video/xalqbank_xazna_antifrod_v5.mp4` (1920×1080, 30 fps, ~117 s).
 Diktor ovozi `assets/media/diktor.wav`, fon musiqasisiz, zamonaviy kinematik SFX bilan.
 
 ## v3 tuzilishi
@@ -12,11 +12,13 @@ Diktor ovozi `assets/media/diktor.wav`, fon musiqasisiz, zamonaviy kinematik SFX
 | `src/build_timeline.py` | Diktor ovozidagi pauzalar asosida sahna vaqtlari va subtitrlar → `timeline.json` |
 | `src/sfx.py` | Tovush dizayni (whoosh, braam, riser, impact, glitch, UI) + diktor miksi |
 | `src/prep_assets.py` | Xazna logotipini kesib olish |
+| `src/prep_app.py` | Ilovaning haqiqiy ekran yozuvidan (`assets/media/xazna_ekran.mp4`) ekranni kesib, subtitrlarni o‘chiradi → `src/build/app/` |
 
 ## Qayta yig‘ish
 ```bash
 python3 src/prep_assets.py
 mkdir -p src/build/clip && ffmpeg -i assets/media/bank_xodimlari.mp4 -vf fps=30 -q:v 3 src/build/clip/f_%04d.jpg
+python3 src/prep_app.py      # (opencv-python-headless kerak)
 python3 src/build_timeline.py
 python3 src/sfx.py mix.wav
 node src/render.js mix.wav video/out.mp4

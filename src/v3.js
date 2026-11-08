@@ -18,7 +18,7 @@ const ASSETS = {
 };
 for (const [k, v] of Object.entries(ASSETS)) { const im = new Image(); im.src = v; IMG[k] = im; }
 const cnv = (w, h) => { const c = document.createElement('canvas'); c.width = w; c.height = h; return c; };
-const CA = cnv(W, H), CB = cnv(W, H), TMP = cnv(W, H), PHC = cnv(440, 840), CARD = cnv(1320, 760), SHC = cnv(520, 580);
+const CA = cnv(W, H), CB = cnv(W, H), TMP = cnv(W, H), PHC = cnv(880, 1680), CARD = cnv(1320, 760), SHC = cnv(520, 580);
 const T = {};      // tinted logo parts
 const LOGO = cnv(1690, 440);
 function tint(img, col) {
@@ -129,12 +129,12 @@ function phoneBody(content) {
   const sk = cl(.5 - PHONE_RY * 1.4, -.2, 1.2), gl = x.createLinearGradient(sx, sy, sx + sw, sy + sh);
   gl.addColorStop(cl(sk - .15), 'rgba(255,255,255,0)'); gl.addColorStop(cl(sk), 'rgba(255,255,255,.22)'); gl.addColorStop(cl(sk + .12), 'rgba(255,255,255,0)');
   x.fillStyle = gl; x.fillRect(sx, sy, sw, sh); x.restore();
-  x.fillStyle = '#0d1016'; rr(-60, -PH / 2 + 26, 120, 30, 15); x.fill();
+  x.fillStyle = '#0d1016'; x.beginPath(); x.arc(0, -PH / 2 + 26, 7, 0, 7); x.fill();
   x.restore();
 }
 let PHONE_RY = 0;
 function phone3D(X, Y, s, content, o = {}) {
-  const prev = x; x = PHC.getContext('2d'); x.setTransform(1, 0, 0, 1, 0, 0); x.globalAlpha = 1; x.clearRect(0, 0, 440, 840);
+  const prev = x; x = PHC.getContext('2d'); x.setTransform(1, 0, 0, 1, 0, 0); x.globalAlpha = 1; x.clearRect(0, 0, 880, 1680); x.setTransform(2, 0, 0, 2, 0, 0);
   PHONE_RY = o.ry || 0; phoneBody(content); x = prev;
   const a = o.alpha ?? 1;
   x.save(); x.globalAlpha *= a * .5;
@@ -145,6 +145,32 @@ function phone3D(X, Y, s, content, o = {}) {
   quad3D(PHC, X, Y + (o.dy || 0), 440 * s, 840 * s, { ry: o.ry || 0, rx: o.rx || 0, rz: o.rz || 0, z: o.z || 0, nx: 6, ny: 10, alpha: a });
 }
 
+/* ---------- real Xazna app screen recording (captions removed) ---------- */
+const APP = {}, APP_N = 630;
+const appIdx = rt => Math.max(1, Math.min(APP_N, Math.round((rt - 1.0) * 30) + 1));
+function pw(t, pts) { // piecewise-linear time map [[t, recT], ...]
+  if (t <= pts[0][0]) return pts[0][1];
+  for (let i = 1; i < pts.length; i++) if (t <= pts[i][0]) return lerp(pts[i - 1][1], pts[i][1], (t - pts[i - 1][0]) / (pts[i][0] - pts[i - 1][0]));
+  return pts[pts.length - 1][1];
+}
+const HOME_RT = 1.25;
+const STEP_MAP = [
+  [[0, 1.0], [0.4, 1.0], [7.0, 5.45], [9.05, 6.2]],      // pul o‘tkazmasi -> «Zararli ilova aniqlandi!»
+  [[0, 6.2], [5.6, 8.95], [10.24, 12.6]],                // «Muammoni hal qilish» -> aniqlash sahifasi
+  [[0, 12.6], [4.23, 15.0]],                             // Ilova ma'lumoti: ruxsatni olib tashlash
+  [[0, 15.0], [3.0, 17.8], [4.0, 19.3], [7.08, 19.95]]]; // O‘chirib tashlash -> «Ma'lumot topilmadi»
+function stepAt(lt) { let step = 0, acc = 0; while (step < 3 && lt >= acc + STEP_D[step]) { acc += STEP_D[step]; step++; } return [step, lt - acc]; }
+function appRT(id, lt, d) {
+  if (id === 's2') return HOME_RT;
+  if (id === 's4') { const det = d * .45; return lt < det ? HOME_RT : Math.min(8.4, 5.35 + (lt - det)); }
+  if (id === 's5') { const [k, st] = stepAt(lt); return pw(st, STEP_MAP[k]); }
+  if (id === 's6') return lt < 7.2 ? HOME_RT : lt < 10.6 ? Math.min(21.95, 20.05 + (lt - 7.2)) : 19.7;
+  return null;
+}
+function drawApp(sx, sy, sw, sh, rt) {
+  const im = APP[appIdx(rt)] || APP.last; if (!im) return;
+  APP.last = im; x.drawImage(im, sx, sy, sw, sh);
+}
 /* ---------- app screens restyled with Xazna branding ---------- */
 function appHeader(sx, sy, sw, title) {
   x.fillStyle = '#fff'; x.fillRect(sx, sy, sw, 150);
@@ -469,7 +495,7 @@ function s2(lt, d) {
   const px = 520, py = 540, inK = eo(p(lt, 0, 1.2));
   const shake = lt > 2.5 && lt < 3.5 ? Math.sin(lt * 80) * .03 : 0;
   phone3D(px, py, .9, (sx, sy, sw, sh) => {
-    appHome(sx, sy, sw, sh, lt);
+    drawApp(sx, sy, sw, sh, HOME_RT);
     if (lt > 3.1) bug(sx + sw / 2 + Math.sin(lt * 3) * 90, sy + 420 + Math.cos(lt * 2.3) * 200, .55, lt);
     if (danger > 0) { x.fillStyle = `rgba(224,40,60,${danger * .2 * (.7 + .3 * Math.sin(lt * 10))})`; x.fillRect(sx, sy, sw, sh); }
   }, { ry: .55 * (1 - inK) + .28 + Math.sin(lt * .6) * .05 + shake, z: (1 - inK) * 600, glow: danger > .3 ? 'rgba(224,52,77,.35)' : 'rgba(120,170,230,.5)' });
@@ -547,24 +573,14 @@ function s3(lt, d) {
 function s4(lt, d) {
   bg(lt);
   const swap = eio(p(lt, 10.0, 11.0));
-  const det = p(lt, 6.2, 6.6), scanY = p(lt, 3.4, 5.8), inK = eo(p(lt, 0, 1.2));
+  const det = p(lt, d * .45, d * .45 + .4), scanY = p(lt, 3.4, 5.8), inK = eo(p(lt, 0, 1.2));
   if (swap < 1) {
     phone3D(lerp(560, -200, swap), 540, .92, (sx, sy, sw, sh) => {
-      appHome(sx, sy, sw, sh, lt);
+      drawApp(sx, sy, sw, sh, appRT('s4', lt, d));
       if (scanY > 0 && scanY < 1) {
         const yy = sy + scanY * sh, g = x.createLinearGradient(0, yy - 140, 0, yy);
         g.addColorStop(0, 'rgba(22,63,120,0)'); g.addColorStop(1, 'rgba(22,63,120,.45)');
         x.fillStyle = g; x.fillRect(sx, yy - 140, sw, 140); x.fillStyle = '#2c64b0'; x.fillRect(sx, yy - 3, sw, 6);
-      }
-      if (det > 0) {
-        x.fillStyle = `rgba(10,20,25,${det * .45})`; x.fillRect(sx, sy, sw, sh);
-        const by = sy - 140 + back(det) * 200;
-        x.fillStyle = '#fff'; x.shadowColor = 'rgba(0,0,0,.35)'; x.shadowBlur = 30; rr(sx + 18, by, sw - 36, 130, 22); x.fill(); x.shadowBlur = 0;
-        x.fillStyle = C.red; rr(sx + 18, by, 10, 130, 5); x.fill();
-        warnTri(sx + 75, by + 62, .38, C.red);
-        txt('Xazna Antifrod', sx + 120, by + 40, 18, '#6a7a99', { al: 'left', w: 600 });
-        txt('Shubhali dastur', sx + 120, by + 72, 24, '#0d2a55', { al: 'left', w: 800 });
-        txt('aniqlandi!', sx + 120, by + 102, 24, C.red, { al: 'left', w: 800 });
       }
     }, { ry: (1 - inK) * -.9 - .22 + Math.sin(lt * .6) * .05 - swap * .9, z: (1 - inK) * 700, alpha: 1 - swap, glow: det > 0 ? 'rgba(224,52,77,.3)' : 'rgba(120,170,230,.5)' });
     if (scanY > 0 && scanY < 1) kt('Qurilma tekshirilmoqda… ' + Math.floor(scanY * 100) + '%', 560, 1000 - 40, 28, 9, 0, { al: 'center', w: 700, color: '#13785c', sb: 0 });
@@ -598,38 +614,16 @@ function s5(lt, d) {
   let step = 0, acc = 0;
   while (step < 3 && lt >= acc + STEP_D[step]) { acc += STEP_D[step]; step++; }
   const st = lt - acc, P = S5[step];
-  let fx = -999, fy = -999, fpress = 0, fa = 0, removedK = 0;
-  const content = (sx, sy, sw, sh) => {
-    if (step === 0) {
-      transferScreen(sx, sy, sw, sh, lt);
-      const mk = p(st, P.modal, P.modal + .5); if (mk > 0) warnModal(sx, sy, sw, sh, mk, 0);
-      fa = p(st, P.tap - 1, P.tap - .6) * (1 - p(st, P.modal, P.modal + .4)); fpress = p(st, P.tap, P.tap + .4);
-      fx = sx + sw / 2 + 30; fy = sy + sh - 92;
-    } else if (step === 1) {
-      const out = p(st, P.out, P.out + .6);
-      if (out < 1) { transferScreen(sx, sy, sw, sh, lt); warnModal(sx, sy, sw, sh, 1, p(st, P.press, P.press + .4)); }
-      if (out > 0) { x.save(); x.translate((1 - eio(out)) * sw, 0); x.fillStyle = '#eef2f9'; x.fillRect(sx, sy, sw, sh); managerScreen(sx, sy, sw, sh, lt, 0, 0, 0); x.restore(); }
-      fa = p(st, P.fin, P.fin + .5) * (1 - p(st, P.press + .8, P.press + 1.2)); fpress = p(st, P.press, P.press + .4);
-      fx = sx + sw / 2 + 40; fy = sy + sh / 2 + 135;
-    } else if (step === 2) {
-      x.fillStyle = '#eef2f9'; x.fillRect(sx, sy, sw, sh);
-      managerScreen(sx, sy, sw, sh, lt, eio(p(st, P.press + .2, P.press + .6)), 0, 0);
-      fa = p(st, P.fin, P.fin + .5) * (1 - p(st, P.press + 1, P.press + 1.4)); fpress = p(st, P.press, P.press + .4);
-      fx = sx + sw - 82; fy = sy + 395;
-      if (st > P.press + .6) { x.strokeStyle = `rgba(22,63,120,${.5 + .5 * Math.sin(lt * 8)})`; x.lineWidth = 5; rr(sx + 20, sy + 346, sw - 40, 98, 22); x.stroke(); }
-    } else {
-      removedK = p(st, P.rem, P.rem + 1.4);
-      x.fillStyle = '#eef2f9'; x.fillRect(sx, sy, sw, sh);
-      managerScreen(sx, sy, sw, sh, lt, 1, p(st, P.press, P.press + .4), removedK);
-      fa = p(st, P.fin, P.fin + .5) * (1 - p(st, P.press + .6, P.press + 1)); fpress = p(st, P.press, P.press + .4);
-      fx = sx + sw / 2 + 30; fy = sy + sh - 92;
-    }
-    if (fa > 0) finger(fx, fy + (1 - fa) * 120, 1, fpress, fa);
-  };
+  const removedK = step === 3 ? p(st, 4.0, 5.0) : 0;
+  const content = (sx, sy, sw, sh) => drawApp(sx, sy, sw, sh, pw(st, STEP_MAP[step]));
   const spin = (1 - eo(p(st, 0, .9))) * (step % 2 ? -.6 : .6) * (lt > 1 ? 1 : 0);
   const inK = eo(p(lt, 0, 1.1));
-  phone3D(520, 545, .93, content, { ry: -.2 + Math.sin(lt * .5) * .05 + spin + (1 - inK) * -.9, z: (1 - inK) * 700, glow: step === 3 && removedK > .5 ? 'rgba(31,157,99,.35)' : (step < 2 ? 'rgba(224,52,77,.22)' : 'rgba(120,170,230,.5)') });
-  if (step === 3 && removedK > .4) confetti(st, P.rem + .6, 520, 480, 50);
+  phone3D(540, 530, 1.06, content, { ry: -.2 + Math.sin(lt * .5) * .05 + spin + (1 - inK) * -.9, z: (1 - inK) * 700, glow: step === 3 && removedK > .5 ? 'rgba(31,157,99,.35)' : (step < 2 ? 'rgba(224,52,77,.22)' : 'rgba(120,170,230,.5)') });
+  if (step === 3 && removedK > 0) {
+    confetti(st, 4.4, 540, 480, 50);
+    const bk = back(p(st, 4.0, 4.6));
+    if (bk > 0) { x.save(); x.translate(850, 300); x.scale(bk, bk); x.shadowColor = 'rgba(31,157,99,.5)'; x.shadowBlur = 40; x.fillStyle = C.acc; x.beginPath(); x.arc(0, 0, 70, 0, 7); x.fill(); x.shadowBlur = 0; check(0, 3, 38, p(st, 4.3, 4.9), '#fff', 13); x.restore(); kt('O‘chirildi!', 850, 405, 34, st, 4.5, { al: 'center', w: 900, color: C.acc, stg: .03 }); }
+  }
   // header
   x.drawImage(IMG.xazna_icon, 1000, 92, 56, 56 * 323 / 335);
   kt('VIRUSNI O‘CHIRISH', 1072, 120, 40, lt, .3, { w: 900, color: C.teal, stg: .02 });
@@ -669,8 +663,9 @@ function s6(lt, d) {
   }
   const notes = [[1.0, 'Qurilma tekshirildi', 'Tahdid topilmadi', C.acc], [3.7, 'Qurilma tekshirildi', 'Hammasi xavfsiz', C.acc], [7.2, 'Diqqat! Zararli dastur', 'Uni hoziroq o‘chiring', C.red]];
   phone3D(px, py, .9, (sx, sy, sw, sh) => {
-    appHome(sx, sy, sw, sh, lt);
+    drawApp(sx, sy, sw, sh, appRT('s6', lt, d));
     notes.forEach((n, i) => {
+      if (i === 2) return;
       const k = back(p(lt, n[0], n[0] + .5)) * (1 - (i < 2 ? p(lt, n[0] + 2, n[0] + 2.3) : 0)); if (k <= 0) return;
       const by = sy - 130 + k * 190;
       x.fillStyle = '#fff'; x.shadowColor = 'rgba(0,0,0,.3)'; x.shadowBlur = 25; rr(sx + 16, by, sw - 32, 110, 22); x.fill(); x.shadowBlur = 0;
@@ -744,6 +739,12 @@ window.prepare = async t => {
   const pl = plan(t), need = [pl.a, pl.b].filter(v => v && SC[v[0]].id === 's3').map(v => clipIdx(v[1]));
   for (const k of need) if (!CLIP[k]) { const im = new Image(); im.src = `build/clip/f_${String(k).padStart(4, '0')}.jpg`; await im.decode(); CLIP[k] = im; }
   const ks = Object.keys(CLIP); if (ks.length > 30) ks.slice(0, ks.length - 30).forEach(k => delete CLIP[k]);
+  for (const v of [pl.a, pl.b]) {
+    if (!v) continue; const rt = appRT(SC[v[0]].id, v[1], SC[v[0]].d); if (rt == null) continue;
+    const k = appIdx(rt);
+    if (!APP[k]) { const im = new Image(); im.src = `build/app/f_${String(k).padStart(4, '0')}.jpg`; await im.decode(); APP[k] = im; }
+  }
+  const ak = Object.keys(APP).filter(k => k !== 'last'); if (ak.length > 40) ak.slice(0, ak.length - 40).forEach(k => delete APP[k]);
 };
 function renderScene([i, lt], c) {
   const prev = x; x = c.getContext('2d');
