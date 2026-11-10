@@ -25,10 +25,10 @@ async function part(k, a, b) {
   const tl = await pg.evaluate(() => window.TIMELINE); await br.close();
   fs.writeFileSync(path.join(__dirname, 'timeline.json'), JSON.stringify(tl, null, 1));
   const audio = `${tmp}/soundtrack.wav`;
-  const py = spawn('python3', [path.join(__dirname, 'soundtrack.py'), path.join(__dirname, 'timeline.json'), audio], { stdio: 'inherit' });
+  const py = spawn('python3', [path.join(__dirname, 'soundtrack.py'), path.join(__dirname, 'timeline.json'), audio], { stdio: 'inherit' }); const pyDone = new Promise(r => py.on('close', r));
   const n = Math.round(tl.total * FPS), per = Math.ceil(n / JOBS);
   const parts = await Promise.all([...Array(JOBS)].map((_, k) => part(k, k * per, Math.min(n, (k + 1) * per))));
-  await new Promise(r => py.on('close', r));
+  await pyDone;
   fs.writeFileSync(`${tmp}/list.txt`, parts.map(f => `file '${f}'`).join('\n'));
   execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', `${tmp}/list.txt`, '-i', audio, '-c:v', 'copy',
     '-af', 'loudnorm=I=-18:TP=-1.5:LRA=11', '-ar', '48000', '-c:a', 'aac', '-b:a', '192k', '-shortest', '-movflags', '+faststart', out], { stdio: 'inherit' });
