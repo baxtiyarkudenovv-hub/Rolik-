@@ -140,7 +140,7 @@ export function decree() {
   x.fillStyle = 'rgba(60,45,30,.35)';
   for (let i = 0; i < 26; i++) { const lw = i % 6 === 5 ? 520 : 820 + r() * 120; x.fillRect(180, 560 + i * 40, lw, 13); }
   x.fillStyle = 'rgba(232,170,60,.45)'; x.fillRect(170, 836, 900, 34);
-  x.fillStyle = '#2a2018'; x.font = '600 26px Inter'; x.textAlign = 'left'; x.fillText('jańa arxeologiyalıq orınlar · turistlik jónelisler', 190, 862);
+  x.fillStyle = '#2a2018'; x.font = '600 26px Inter'; x.textAlign = 'left'; x.fillText('jańa arxeologiyalıq orınlar · turistlik baǵdarlar', 190, 862);
   const ptex = tex(pc, 1); ptex.wrapS = ptex.wrapT = THREE.ClampToEdgeWrapping;
   const pg = new THREE.PlaneGeometry(4.2, 5.94, 30, 40), pp = pg.attributes.position;
   for (let i = 0; i < pp.count; i++) pp.setZ(i, Math.pow(Math.abs(pp.getX(i)) / 2.1, 3) * .12 + Math.pow((pp.getY(i) + 2.97) / 5.94, 4) * .05);

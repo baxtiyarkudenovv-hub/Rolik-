@@ -1,59 +1,60 @@
-// Буғрахан естелиги — дикторлық текст (қарақалпақ тилинде), бөлимлерге бөлинген.
-// Ҳәр сахнаның `segs` — субтитр/диктор сегментлери. `int` — интервью орны (видео кейин қойылады).
+// Qaraqalpaqstan tariyxı. Buǵraxan esteligi — diktor teksti (qaraqalpaq latın jazıwında).
+// Hár sahnanıń `segs` — subtitr/diktor segmentleri. `int` — intervyu ornı (video keyin qoyıladı).
 window.SCRIPT = [
   { id: 'intro' },
-  { id: 'exped', ch: 'I · Ашылыў', segs: [
-    'Бул естелик С. П. Толстов басшылығында, XX әсирдиң 50–60-жылларында',
-    'Хорезм археология ҳәм этнография экспедициясы тәрепинен анықланған',
-    'ҳәм 1946-жылы археологиялық картаға түсирилген.'] },
-  { id: 'name', ch: 'II · Атаманың сыры', segs: [
-    'Ең дәслеп бул естелик не ушын «Буғрахан» деп аталған деген сораў туўылады.',
-    'Мағлыўматларда ол 992-жылы Мәўереннаҳрды ийелеген Қараханийлерден болған',
-    'Буғрахан аты менен байланыслы деп көрсетиледи.',
-    'Сондай-ақ Буғрахан Хорезмшаҳлар мәмлекетиниң орайы болған деген болжаўлар да бар.'] },
-  { id: 'int', who: 'Интервью', role: 'Археолог-илимпаз' },
-  { id: 'minaret', ch: 'III · Минара', segs: [
-    'Естеликте сақланған минара XI әсирлерден дерек береди.',
-    'Естеликтиң улыўма жер майданы 60 гектардан аслам орынды ийелейди.',
-    'Мағлыўматлар бул орынның бир ўақытлары үлкен цивилизация орайы болғанлығынан дерек береди.'] },
-  { id: 'int', who: 'Интервью', role: 'Археолог-илимпаз' },
-  { id: 'beacon', ch: 'IV · Минараның хызмети', segs: [
-    'Минара тарийхта қандай хызмет атқарған деген сораў пайда болады.',
-    'Болжаўларға көре, ол хабар бериў орны болған деген жуўмақлар шығарыўға тийкар жарата алады.',
-    'Минара әтирапы жәмәәтлик орын болған деген жуўмақлар да шығарылады.',
-    'Орта әсирлерде Хорезм минаралары бирден-бир конструктив көриниске ийе болған:',
-    'бийик, домалақ ҳәм жоқарысы жиңишке.',
-    'Буғрахан естелиги минарасының бийиклиги ҳаққында анық мағлыўматлар жоқ — тек ғана болжаўлар айтылады.'] },
-  { id: 'int', who: 'Интервью', role: 'Археолог-илимпаз' },
-  { id: 'city', ch: 'V · Қала ҳәм мешит', segs: [
-    'Минаралар конструкциясы бойынша ҳәр түрли болыўы мүмкин,',
-    'бирақ мусылман халықлар тарийхында минаралар тийкарынан намаз оқыйтуғын орын сыпатында көбирек қолланылған.',
-    'Буғрахан қаласы Хорезмшаҳлар мәмлекетиниң арқа шегарасында жайласқан.',
-    'Изертлеўлер қаланың үш бөлимнен ибарат екенлигин көрсетти.',
-    'Оның орайлық бөлиминде қала мешити жайласқан болған.',
-    'Буғрахан минарасы Хорезмшаҳлар дәўири минаралары усылында қурылған.'] },
-  { id: 'int', who: 'Интервью', role: 'Археолог-илимпаз' },
-  { id: 'flood', ch: 'VI · Суў ҳәм ўақыт', segs: [
-    'Буғрахан минарасы қурылысының сол дәрежеде шебер қурылғанлығы',
-    'бул орынларды неше мәрте суў алса да, оның сақланып қалғанлығы менен түсиндириледи.'] },
-  { id: 'int', who: 'Интервью', role: 'Археолог-илимпаз' },
-  { id: 'int', who: 'Интервью', role: 'Студент · археология қәнигелиги' },
-  { id: 'modern', ch: 'VII · Жаңа бет', segs: [
-    'Буғрахан естелигин үйрениў жумыслары бир неше басқышларда алып барылды.',
-    'Өзбекстан Республикасы Президентиниң 2025-жылы қабыл етилген 248-санлы қарарына муўапық',
-    'жаңа археологиялық орынларды үйрениў ҳәм жаңа туристлик жөнелислерди жолға қойыў мәселелери белгиленген еди.',
-    'Мине, усы тапсырмаға муўапық Бердақ атындағы ҚМУ археология кафедрасы қәнигелери тәрепинен',
-    'Буғраханды қайта тиклеў ҳәм абаданластырыў жумыслары алып барылды.',
-    'Ески қалалар үйренилип, соңынан олардың жаўылып кететуғынлығы туристлер итибарын тартыўға кесент ететуғын еди.',
-    'Ал Буғраханды енди қысы-жазы көриў ҳәм зиярат етиў мүмкиншилиги жаратылды.'] },
-  { id: 'int', who: 'Интервью', role: 'Археолог-илимпаз' },
-  { id: 'wisdom', ch: 'VIII · Илим орайы', segs: [
-    'Үлкемиз аймағынан табылған ҳәм үйренилип атырған бул қалалар бир жуўмақ шығарыўға мүмкиншилик береди.',
-    'Олар сондай етип қурылған — онда үлкен билим, тәжирийбе ҳәм көнликпелер жәмленген.',
-    'Демек, биз жасап турған аймақ орта әсирлерде ҳақыйқатында да илим-билим раўажланған орайлардың бири болған.'] },
-  { id: 'int', who: 'Интервью', role: 'Археолог-илимпаз' },
-  { id: 'finale', ch: 'IX · Мийрас', segs: [
-    'Қоңырат районы аймағында жайласқан ҳәм XI–XIV әсирлерге тийисли бул естелик еле де үйрениледи,',
-    'ҳәм оның қатламларында еле қанша мағлыўматлар, бийбаҳа дереклер бар екенлиги сөзсиз.'] },
+  { id: 'exped', segs: [
+    'Bul estelik S. P. Tolstov basshılıǵındaǵı Xorezm arxeologiya hám etnografiya ekspediciyası tárepinen',
+    'XX ásirdiń 50–60-jıllarında anıqlanǵan',
+    'hám 1946-jılı arxeologiyalıq kartaǵa túsirilgen.'] },
+  { id: 'name', segs: [
+    'Eń dáslep «Bul estelik ne ushın Buǵraxan dep atalǵan?» degen soraw tuwıladı.',
+    'Maǵlıwmatlarda esteliktiń atı 992-jılı Mawarannaxrdı iyelegen Qaraxaniyler áwladınan bolǵan',
+    'Buǵraxannıń atı menen baylanıslı ekenligi kórsetiledi.',
+    'Sonday-aq, Buǵraxan qalası Xorezmshahlar mámleketiniń orayı bolǵan degen boljawlar da bar.'] },
+  { id: 'int', role: 'Arxeolog-ilimpaz' },
+  { id: 'minaret', segs: [
+    'Estelikte saqlanǵan minara XI ásirden derek beredi.',
+    'Esteliktiń ulıwma maydanı 60 gektardan aslam.',
+    'Maǵlıwmatlar bul jerdiń bir waqıtları úlken civilizaciya orayı bolǵanlıǵın kórsetedi.'] },
+  { id: 'int', role: 'Arxeolog-ilimpaz' },
+  { id: 'beacon', segs: [
+    'Minara tariyxta qanday xızmet atqarǵan?',
+    'Boljawlarǵa qaraǵanda, ol xabar beriw ornı bolǵan bolıwı múmkin.',
+    'Minaranıń átirapı jámiyetlik orın bolǵan degen juwmaq ta bar.',
+    'Orta ásirlerde Xorezm minaralarınıń qurılısında ulıwmalıq belgiler bolǵan.',
+    'Olar biyik, dóńgelek bolıp, joqarı qaray jińishkerip barǵan.',
+    'Buǵraxan minarasınıń biyikligi haqqında anıq maǵlıwmat joq. Bul haqqında tek boljawlar aytıladı.'] },
+  { id: 'int', role: 'Arxeolog-ilimpaz' },
+  { id: 'city', segs: [
+    'Minaralar qurılısı jaǵınan hár túrli bolıwı múmkin.',
+    'Musılman xalıqlarınıń tariyxında minaralar tiykarınan namaz oqıytuǵın orın sıpatında qollanılǵan.',
+    'Buǵraxan qalası Xorezmshahlar mámleketiniń arqa shegarasında jaylasqan.',
+    'Izertlewler qalanıń úsh bólimnen ibarat bolǵanlıǵın kórsetti.',
+    'Onıń oraylıq bóliminde qala meshiti jaylasqan.',
+    'Buǵraxan minarası Xorezmshahlar dáwirine tán usılda qurılǵan.'] },
+  { id: 'int', role: 'Arxeolog-ilimpaz' },
+  { id: 'flood', segs: [
+    'Bul jerlerdi birneshe márte suw basqanına qaramastan, Buǵraxan minarası saqlanıp qalǵan.',
+    'Bul onıń qanshelli sheberlik penen qurılǵanlıǵın kórsetedi.'] },
+  { id: 'int', role: 'Arxeolog-ilimpaz' },
+  { id: 'int', role: 'Shákirt · arxeologiya' },
+  { id: 'modern', segs: [
+    'Buǵraxan esteligin úyreniw jumısları birneshe basqıshta alıp barıldı.',
+    'Ózbekstan Respublikası Prezidentiniń 2025-jılı qabıl etilgen 248-sanlı qararına muwapıq,',
+    'jańa arxeologiyalıq orınlardı úyreniw hám jańa turistlik baǵdarlardı jolǵa qoyıw wazıypaları belgilengen edi.',
+    'Usı tapsırmaǵa muwapıq, Berdaq atındaǵı Qaraqalpaq mámleketlik universitetiniń arxeologiya kafedrası qánigeleri tárepinen',
+    'Buǵraxan esteligin qayta tiklew hám abadanlastırıw jumısları alıp barıldı.',
+    'Burın eski qalalardıń qazıp úyrenilgen orınları jumıslar tamamlanǵannan keyin qaytadan jabılatuǵın edi.',
+    'Bul sayaxatshılardıń itibarın tartıwǵa kesent etetuǵın edi.',
+    'Endi Buǵraxan esteligin qısı-jazı kóriw hám zıyarat etiw múmkinshiligi jaratıldı.'] },
+  { id: 'int', role: 'Arxeolog-ilimpaz' },
+  { id: 'wisdom', segs: [
+    'Úlkemiz aymaǵınan tabılǵan hám úyrenilip atırǵan bul qalalar bir juwmaq shıǵarıwǵa múmkinshilik beredi.',
+    'Olardıń qurılısında tereń bilim, bay tájiriybe hám sheberlik jámlengen.',
+    'Demek, biz jasap atırǵan aymaq orta ásirlerde ilim-bilim rawajlanǵan oraylardıń biri bolǵan.'] },
+  { id: 'int', role: 'Arxeolog-ilimpaz' },
+  { id: 'finale', segs: [
+    'Qońırat rayonı aymaǵında jaylasqan, XI–XIV ásirlerge tiyisli bul estelikti úyreniw jumısları ele de dawam etedi.',
+    'Onıń qatlamlarında ele de talay maǵlıwmatlar hám biybaha derekler bar ekenligi sózsiz.'] },
   { id: 'end' },
 ];

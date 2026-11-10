@@ -134,12 +134,33 @@ function txt(s, X, Y, size, color, o = {}) {
   x.fillText(s, X, Y); x.restore();
 }
 function rtxt(s, X, Y, size, color, lt, t0, o = {}) { const k = eo(p(lt, t0, t0 + (o.dur || 1.6))); if (k <= 0) return; txt(s, X, Y + (1 - k) * (o.dy ?? 20), size, color, { ...o, a: k * (o.a ?? 1), ls: (o.ls || 0) + (1 - k) * (o.spread ?? 10) }); }
+// animated gold lettering: per-letter rise + moving shimmer
+function gold(s, X, Y, size, lt, t0, o = {}) {
+  const a0 = o.a ?? 1; if (a0 <= 0 || lt < t0) return;
+  x.save(); x.font = `${o.it ? 'italic ' : ''}${o.w || 700} ${size}px ${o.f || SERIF}`; x.letterSpacing = (o.ls || 0) + 'px'; x.textBaseline = 'middle'; x.textAlign = 'left';
+  const ch = [...s], tot = x.measureText(s).width, x0 = o.al === 'left' ? X : o.al === 'right' ? X - tot : X - tot / 2;
+  const g = x.createLinearGradient(x0, Y - size * .55, x0 + tot * .35, Y + size * .5);
+  g.addColorStop(0, '#f6dc95'); g.addColorStop(.35, '#c8933a'); g.addColorStop(.6, '#ffe9b0'); g.addColorStop(.85, '#b07a2a'); g.addColorStop(1, '#f2d38a');
+  const sh = ((lt - t0) * .45) % 2.2 - .6, hg = x.createLinearGradient(x0, Y, x0 + tot, Y);
+  [[-.2, 0], [-.06, .0], [0, .85], [.06, 0], [1.4, 0]].forEach(([d, al]) => hg.addColorStop(cl(sh + d), `rgba(255,250,225,${al})`));
+  let acc = '';
+  ch.forEach((c, i) => {
+    const px = x0 + x.measureText(acc).width; acc += c;
+    const k = eo(p(lt, t0 + i * (o.st ?? .04), t0 + i * (o.st ?? .04) + .75)); if (k <= 0) return;
+    const dy = (1 - k) * size * .35;
+    x.globalAlpha = k * a0; x.shadowColor = 'rgba(0,0,0,.7)'; x.shadowBlur = 16; x.shadowOffsetY = 3; x.fillStyle = g; x.fillText(c, px, Y + dy);
+    x.shadowColor = `rgba(255,180,70,${.55 * k})`; x.shadowBlur = 28 * k; x.shadowOffsetY = 0; x.fillText(c, px, Y + dy);
+    x.shadowColor = 'transparent'; x.globalCompositeOperation = 'lighter'; x.globalAlpha = k * a0 * .9; x.fillStyle = hg; x.fillText(c, px, Y + dy); x.globalCompositeOperation = 'source-over';
+  });
+  x.restore();
+}
 // documentary keyword card (lower-left): thin gold rule + serif word + small caps line
 function keyword(word, sub, lt, t0, t1, o = {}) {
   const k = eo(p(lt, t0, t0 + .9)) * (1 - p(lt, t1 - .6, t1));
   if (k <= 0) return; const X = o.x ?? 150, Y = o.y ?? (BAR + PH - 150);
+  { x.save(); x.globalAlpha = k * .75; const g = x.createRadialGradient(X + 260, Y, 20, X + 260, Y, 520); g.addColorStop(0, 'rgba(0,0,0,.55)'); g.addColorStop(1, 'rgba(0,0,0,0)'); x.fillStyle = g; x.fillRect(X - 260, Y - 260, 1040, 520); x.restore(); }
   x.save(); x.globalAlpha = k; x.fillStyle = '#e6b877'; x.fillRect(X, Y - 52, 3, sub ? 106 : 70); x.restore();
-  txt(word, X + 26 + (1 - k) * 16, Y - 16, o.size || 58, '#fff5e4', { f: SERIF, w: 700, al: 'left', a: k });
+  gold(word, X + 26, Y - 16, o.size || 58, lt, t0, { al: 'left', a: 1 - p(lt, t1 - .6, t1) });
   if (sub) txt(sub.toUpperCase(), X + 28 + (1 - k) * 22, Y + 32, 20, '#ecd2a8', { w: 600, al: 'left', a: k * .95, ls: 5 });
 }
 function proj(v, camera = cam) { const q = v.clone().project(camera); return [(q.x + 1) / 2 * W, BAR + (1 - q.y) / 2 * PH, q.z < 1]; }
@@ -178,8 +199,8 @@ S.intro = (lt, d) => {
     const out2 = 1 - p(lt, d - 1.6, d - .3); x.save(); x.globalAlpha = out2;
     rtxt('QARAQALPAQSTAN TARIYXI', W / 2, 400, 32, '#f3dcb4', lt, 5.4, { w: 500, ls: 16, spread: 28 });
     const ka = eo(p(lt, 6, 7.5)); x.globalAlpha = out2 * ka; x.fillStyle = '#e6b877'; x.fillRect(W / 2 - 170 * ka, 436, 340 * ka, 2); x.globalAlpha = out2;
-    rtxt('Buǵraxan esteligi', W / 2, 520, 126, '#fff3dc', lt, 6.8, { f: SERIF, w: 700, ls: 2, spread: 20, dur: 2.2, glow: 'rgba(255,170,80,.55)', gb: 40 });
-    rtxt('XI–XIV ásirler  ·  Qońırat rayonı', W / 2, 622, 30, '#f0c99a', lt, 8.8, { f: SERIF, it: true, ls: 3 });
+    gold('Buǵraxan esteligi', W / 2, 520, 130, lt, 6.8, { st: .07 });
+    gold('XI–XIV ásirler  ·  Qońırat rayonı', W / 2, 625, 34, lt, 8.8, { it: true, ls: 2, st: .025 });
     x.restore();
   };
 };
@@ -195,7 +216,7 @@ S.exped = (lt, d, T) => {
       const fr = Math.floor(lt * 25);
       for (let i = 0; i < 3; i++) if (hrnd(fr * 3 + i) > .6) { const sx = hrnd(fr * 7 + i) * W; x.strokeStyle = 'rgba(255,240,210,.25)'; x.lineWidth = 1 + hrnd(fr + i); x.beginPath(); x.moveTo(sx, BAR); x.lineTo(sx + (hrnd(fr + 9) - .5) * 20, BAR + PH); x.stroke(); }
       for (let i = 0; i < 8; i++) if (hrnd(fr * 11 + i) > .75) { x.fillStyle = 'rgba(20,12,4,.6)'; x.beginPath(); x.arc(hrnd(fr * 13 + i) * W, BAR + hrnd(fr * 17 + i) * PH, 1 + hrnd(fr + i * 3) * 3, 0, 7); x.fill(); }
-      keyword('S. P. Tolstov', 'Xorezm arxeologiya-etnografiya ekspediciyası', lt, 1.2, T[2] - .4);
+      keyword('S. P. Tolstov', 'Xorezm arxeologiya hám etnografiya ekspediciyası', lt, 1.2, T[1] - .1); keyword('50–60-jıllar', 'XX ásir · anıqlanǵan', lt, T[1] + .1, T[2] - .4, { size: 70 });
       txt('ARXIV · XX ÁSIR 50–60-JILLAR', W - 150, BAR + 56, 18, '#f1e2c4', { al: 'right', ls: 4, a: eo(p(lt, .5, 1.5)) * (1 - p(lt, T[2] - 1, T[2] - .4)) });
     };
   }
@@ -214,7 +235,7 @@ S.exped = (lt, d, T) => {
     ping(St.mapPos(St.GEO.BUG, 0), eo(p(lm, 3, 3.8)), lt);
     mapLabel('Buǵraxan', St.mapPos(St.GEO.BUG, 70), eo(p(lm, 3.3, 4.2)), { size: 46, dy: -50, col: '#fff' });
     const st = p(lm, 3.8, 4.25);
-    if (st > 0) { x.save(); x.translate(330, BAR + PH - 170); x.rotate(-.12); const s = 1 + 1.3 * (1 - eo(st)); x.scale(s, s); x.globalAlpha = eo(st) * .9; x.strokeStyle = '#e04a2a'; x.lineWidth = 5; x.strokeRect(-150, -60, 300, 120); txt('1946', 0, -10, 62, '#ff6a44', { f: SERIF, w: 700, gb: 0 }); txt('ARXEOLOGIYALIQ KARTA', 0, 34, 15, '#ff6a44', { w: 700, ls: 3, gb: 0 }); x.restore(); }
+    keyword('1946', 'Arxeologiyalıq kartaǵa túsirilgen', lt, T[2] + 3.4, d - .3, { size: 84 });
   };
 };
 S.name = (lt, d, T) => {
@@ -231,10 +252,10 @@ S.name = (lt, d, T) => {
       mapLabel('Ámiwdárya', St.mapPos([760, 660], 0), eo(p(lt, 1, 2)), { it: true, size: 24, col: '#d7f0f4' });
       mapLabel('Sırdárya', St.mapPos([1180, 430], 0), eo(p(lt, 1.2, 2.2)), { it: true, size: 24, col: '#d7f0f4' });
       mapLabel('XOREZM', St.mapPos([560, 540], 0), eo(p(lt, 1.4, 2.4)), { f: SANS, size: 28, ls: 12, col: '#ffd9a6' });
-      mapLabel('MÁWERENNAHR', St.mapPos([1160, 720], 0), eo(p(lt, T[1] + .6, T[1] + 1.6)), { f: SANS, size: 32, ls: 10, col: '#ffb49a' });
+      mapLabel('MAWARANNAXR', St.mapPos([1160, 720], 0), eo(p(lt, T[1] + .6, T[1] + 1.6)), { f: SANS, size: 32, ls: 10, col: '#ffb49a' });
       [['Buxara', 960, 770], ['Samarqand', 1260, 810]].forEach(([n, a, b], i) => mapLabel(n, St.mapPos([a, b], 0), eo(p(lt, T[1] + 1 + i * .3, T[1] + 2 + i * .3)), { size: 24 }));
       mapLabel('QARAXANIYLER', St.mapPos([1700, 330], 0), eo(p(lt, T[1] + 1.4, T[1] + 2.4)), { f: SANS, size: 28, ls: 8, col: '#ff8a6a' });
-      keyword('992', 'Qaraxaniyler Máwerennahrdı iyeleydi', lt, T[1] + 2.2, T[2] - .3, { size: 72 });
+      keyword('992', 'Qaraxaniyler Mawarannaxrdı iyeleydi', lt, T[1] + 2.2, T[2] - .3, { size: 72 });
     };
   }
   if (lt < T[3] - .3) {
@@ -271,9 +292,9 @@ S.minaret = (lt, d, T) => {
   setGrade({ exp: .6, bloom: .35, contrast: 1.15, sat: 1.1 });
   return () => {
     const n = Math.round(60 * eo(p(l, 1, 3.6)));
-    txt(`${n}+`, W - 330, BAR + 300, 150, '#fff2d8', { f: SERIF, w: 700, a: eo(p(l, 1, 1.8)) });
+    gold(`${n}+`, W - 330, BAR + 300, 150, lt, T[1] + .7, { st: 0 });
     txt('GEKTAR', W - 330, BAR + 400, 30, '#fff2d8', { ls: 18, a: eo(p(l, 1.4, 2.2)) });
-    keyword('Úlken civilizaciya orayı', 'Buǵraxan qalası', lt, T[2], d - .4, { size: 56 });
+    keyword('Úlken civilizaciya orayı', 'Bir waqıtları', lt, T[2], d - .4, { size: 56 });
   };
 };
 S.beacon = (lt, d, T) => {
@@ -297,7 +318,7 @@ S.beacon = (lt, d, T) => {
     a.needsUpdate = true;
     look(orbit(lerp(240, 190, k), lerp(70, 55, k), lerp(2.2, 2.6, k)), V(0, 8, 0), lt, .4, 38);
     setGrade({ exp: 1.1, bloom: .7, tint: [.98, .96, 1.04] });
-    return () => keyword('Jámáátlik orın', 'Minara átirapı', lt, .6 + T[2], T[3] - .4);
+    return () => keyword('Jámiyetlik orın', 'Minara átirapı', lt, .6 + T[2], T[3] - .4);
   }
   ACTIVE = studio; holo.visible = true; studio.background = holoBg; key.intensity = 0; rim.intensity = 0; shemi.intensity = 0;
   const l = lt - T[3] + .4;
@@ -306,13 +327,13 @@ S.beacon = (lt, d, T) => {
   setGrade({ exp: .9, bloom: .9, vign: .9, grain: .03 });
   return () => {
     const pt = (y, r) => { const a = holo.rotation.y; return V(Math.cos(.6) * r, y - 14, Math.sin(.6) * r); };
-    [['biyik', T[4], pt(16, 3.4), [140, -40]], ['domalaq', T[4] + 1, pt(4, 4.2), [150, 30]], ['joqarısı jińishke', T[4] + 2, pt(27, 2.8), [150, -50]]].forEach(([s, t0, v, [dx, dy]]) => {
+    [['biyik', T[4], pt(16, 3.4), [140, -40]], ['dóńgelek', T[4] + 1, pt(4, 4.2), [150, 30]], ['joqarı qaray jińishkergen', T[4] + 2, pt(27, 2.8), [150, -50]]].forEach(([s, t0, v, [dx, dy]]) => {
       const k = eo(p(lt, t0, t0 + .8)); if (k <= 0) return; const [X, Y] = proj(v);
       x.save(); x.strokeStyle = `rgba(255,214,140,${k})`; x.lineWidth = 2; x.beginPath(); x.moveTo(X, Y); x.lineTo(X + dx * k, Y + dy * k); x.lineTo(X + (dx + 170) * k, Y + dy * k); x.stroke(); x.fillStyle = `rgba(255,214,140,${k})`; x.beginPath(); x.arc(X, Y, 5, 0, 7); x.fill(); x.restore();
       txt(s, X + dx + 6, Y + dy - 24, 36, '#ffd68c', { f: SERIF, w: 700, it: true, al: 'left', a: k, glow: 'rgba(255,160,60,.4)' });
     });
     const hk = eo(p(lt, T[5], T[5] + 1));
-    if (hk > 0) { const [X1, Y1] = proj(V(-8, -14, 3)), [X2, Y2] = proj(V(-8, 14, 3)); x.save(); x.strokeStyle = `rgba(255,120,90,${hk})`; x.lineWidth = 2.5; x.setLineDash([10, 8]); x.beginPath(); x.moveTo(X1, Y1); x.lineTo(X2, lerp(Y1, Y2 - 60, hk)); x.stroke(); x.restore(); txt('? m', X1 - 120, (Y1 + Y2) / 2, 110, '#ff8a6a', { f: SERIF, w: 700, a: hk, glow: 'rgba(255,90,60,.6)', gb: 30 }); }
+    if (hk > 0) { const [X1, Y1] = proj(V(-8, -14, 3)), [X2, Y2] = proj(V(-8, 14, 3)); x.save(); x.strokeStyle = `rgba(255,120,90,${hk})`; x.lineWidth = 2.5; x.setLineDash([10, 8]); x.beginPath(); x.moveTo(X1, Y1); x.lineTo(X2, lerp(Y1, Y2 - 60, hk)); x.stroke(); x.restore(); gold('? m', X1 - 120, (Y1 + Y2) / 2, 110, lt, T[5], { st: .1 }); }
     keyword('Biyikligi belgisiz', 'Tek ǵana boljawlar', lt, T[5] + 1, d - .4, { size: 50 });
   };
 };
@@ -356,7 +377,7 @@ S.city = (lt, d, T) => {
   setGrade({ exp: .66, bloom: .35, tint: [1.04, .98, .9] });
   return () => keyword('Xorezmshahlar dáwiri usılı', 'Minara qurılısı', lt, T[5] + .5, d - .3, { size: 54 });
 };
-S.flood = (lt, d) => {
+S.flood = (lt, d, T) => {
   ACTIVE = site; water.visible = true; rain.visible = true;
   const rise = sm(p(lt, .3, d * .5)), rec = sm(p(lt, d * .62, d - .5)), storm = rise * (1 - rec);
   water.position.y = lerp(-6, 5.2, rise * (1 - rec)); waterNrm.offset.set(lt * .01, lt * .006);
@@ -368,8 +389,8 @@ S.flood = (lt, d) => {
   setGrade({ exp: lerp(.62, .7, storm), sat: lerp(1, .55, storm), contrast: 1.08, tint: storm > .2 ? [.95, .98, 1.02] : [1.02, .98, .94], bloom: .3 });
   return () => {
     const cs = ['XII', 'XIII', 'XIV', 'XVI', 'XVIII', 'XX'], ci = Math.floor(cl(p(lt, 1, d - 2)) * cs.length * .999);
-    txt(cs[ci] + ' ásir', W - 150, BAR + 70, 40, '#f5efe6', { f: SERIF, w: 700, al: 'right', a: .85 * eo(p(lt, 1, 2)) * (1 - p(lt, d - 1.2, d - .4)) });
-    keyword('Saqlanıp qalǵan', 'Neshe márte suw alsa da', lt, d * .68, d - .3, { size: 64 });
+    gold(cs[ci] + ' ásir', W - 150, BAR + 70, 46, lt, 1, { al: 'right', st: 0, a: 1 - p(lt, d - 1.2, d - .4) });
+    keyword('Saqlanıp qalǵan', 'Birneshe márte suw basqanına qaramastan', lt, T[0] + 1, T[1] - .1, { size: 64 }); keyword('Sheberlik', 'qurılısında', lt, T[1] + .2, d - .3, { size: 72 });
   };
 };
 S.modern = (lt, d, T) => {
@@ -382,7 +403,7 @@ S.modern = (lt, d, T) => {
       const pts = [['1946', 'karta'], ['1950–60', 'ekspediciya'], ['…', 'izertlewler'], ['2025', 'jańa basqısh']], kk = eo(p(lt, .3, 3)), Y = BAR + PH - 150;
       const g = x.createLinearGradient(0, Y - 140, 0, BAR + PH); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(0,0,0,.6)'); x.fillStyle = g; x.fillRect(0, Y - 140, W, BAR + PH - Y + 140);
       x.strokeStyle = 'rgba(230,190,130,.7)'; x.lineWidth = 2; x.beginPath(); x.moveTo(360, Y); x.lineTo(360 + 1200 * kk, Y); x.stroke();
-      pts.forEach(([y, s], i) => { const X = 360 + i * 400, q = eo(p(lt, .6 + i * .6, 1.4 + i * .6)); x.fillStyle = `rgba(255,225,176,${q})`; x.beginPath(); x.arc(X, Y, 8, 0, 7); x.fill(); txt(y, X, Y - 50, 50, '#ffe9c8', { f: SERIF, w: 700, a: q }); txt(s.toUpperCase(), X, Y + 40, 18, '#e8cfa6', { a: q, ls: 4 }); });
+      pts.forEach(([y, s], i) => { const X = 360 + i * 400, q = eo(p(lt, .6 + i * .6, 1.4 + i * .6)); x.fillStyle = `rgba(255,225,176,${q})`; x.beginPath(); x.arc(X, Y, 8, 0, 7); x.fill(); gold(y, X, Y - 50, 50, lt, .6 + i * .6, { st: .03 }); txt(s.toUpperCase(), X, Y + 40, 18, '#e8cfa6', { a: q, ls: 4 }); });
       txt('BIR NESHE BASQISH', W / 2, BAR + 70, 24, '#fff0d8', { ls: 10, a: eo(p(lt, .4, 1.4)) * (1 - p(lt, T[1] - 1, T[1] - .3)) });
     };
   }
@@ -395,7 +416,7 @@ S.modern = (lt, d, T) => {
     animateDust(l, 4);
     look(lv(V(-1.2, 7.5, 5.2), V(-.2, 4.6, 3.6), k), lv(V(0, -1, 0), V(.2, -1, .6), k), l, .02, 32);
     setGrade({ exp: .85, bloom: .2, vign: 1.1, tint: [1.05, .99, .92] });
-    return () => keyword('Qarar № 248 · 2025', 'Ózbekstan Respublikası Prezidenti', lt, T[1] + .6, T[2] + .4, { size: 54 }) || keyword('Jańa turistlik jónelisler', 'Arxeologiyalıq orınlardı úyreniw', lt, T[2] + .6, T[3] - .3, { size: 50 });
+    return () => keyword('Qarar № 248 · 2025', 'Ózbekstan Respublikası Prezidenti', lt, T[1] + .6, T[2] + .4, { size: 54 }) || keyword('Jańa turistlik baǵdarlar', 'Arxeologiyalıq orınlardı úyreniw', lt, T[2] + .6, T[3] - .3, { size: 50 });
   }
   if (lt < T[5] - .3) {
     ACTIVE = studio; EXC.g.visible = true; studio.background = new THREE.Color('#1a140e');
@@ -416,7 +437,7 @@ S.modern = (lt, d, T) => {
   setGrade({ exp: .62, bloom: .35, sat: lerp(.8, 1, sum), tint: sum < .5 ? [.97, .99, 1.03] : [1.03, .99, .93] });
   return () => {
     keyword(sum < .5 ? 'Qısı' : 'Jazı', null, lt, T[5] + .4 + (sum < .5 ? 0 : dd * .55), sum < .5 ? T[5] + dd * .5 : d - .3, { size: 70 });
-    txt('ZIYARAT ETIW MÚMKINSHILIGI JARATILDI', W / 2, BAR + 64, 22, '#fff5e6', { ls: 8, a: eo(p(lt, T[6], T[6] + 1)) * (1 - p(lt, d - 1, d - .3)) });
+    txt('ZIYARAT ETIW MÚMKINSHILIGI JARATILDI', W / 2, BAR + 64, 22, '#fff5e6', { ls: 8, a: eo(p(lt, T[7], T[7] + 1)) * (1 - p(lt, d - 1, d - .3)) });
   };
 };
 S.wisdom = (lt, d, T) => {
@@ -428,7 +449,7 @@ S.wisdom = (lt, d, T) => {
   look(V(lerp(3.5, -1.5, k), lerp(1.5, .4, k), lerp(11, 8, k)), V(0, .3, 0), lt, .02, 34);
   setGrade({ exp: .9, bloom: .45, vign: 1.2, contrast: 1.1, tint: [1.04, .98, .9] });
   return () => {
-    ['bilim', 'tájiriybe', 'kónlikpe'].forEach((s, i) => { const kk = eo(p(lt, T[1] + 1 + i * .9, T[1] + 2 + i * .9)) * (1 - p(lt, T[2] + .6, T[2] + 1.4)); txt(s, W / 2 + (i - 1) * 420, BAR + PH - 120, 50, '#ffe7b8', { f: SERIF, w: 700, it: true, a: kk, glow: 'rgba(255,170,60,.5)', gb: 24 }); });
+    ['tereń bilim', 'bay tájiriybe', 'sheberlik'].forEach((s, i) => gold(s, W / 2 + (i - 1) * 460, BAR + PH - 120, 50, lt, T[1] + .8 + i * .9, { it: true, a: 1 - p(lt, T[2] + .6, T[2] + 1.4) }));
     keyword('Ilim-bilim orayı', 'Orta ásirlerde', lt, T[2] + 1.2, d - .4, { size: 66 });
   };
 };
@@ -441,7 +462,7 @@ S.finale = (lt, d, T) => {
     look(V(lerp(-5, 3, k), lerp(1, -10, k), lerp(34, 30, k)), V(lerp(-1, 1, k), lerp(-3, -9, k), 4), lt, .05, 40);
     setGrade({ exp: .75, bloom: .3, vign: 1.1, tint: [1.04, .98, .92] });
     return () => {
-      ['XIV', 'XIII', 'XII', 'XI'].forEach((s, i) => { const v = V(-8.5, -i * 3 - 1.5, 5.2); mapLabel(s + ' ásir', v, eo(p(lt, .5 + i * .8, 1.3 + i * .8)), { size: 34 }); });
+      ['XIV', 'XIII', 'XII', 'XI'].forEach((s, i) => { const v = V(-8.5, -i * 3 - 1.5, 5.2); { const [X, Y, ok] = proj(v); if (ok) gold(s + ' ásir', X, Y, 40, lt, .5 + i * .8, { st: .03 }); } });
       keyword('Biybaha derekler', 'Qatlamlarda', lt, T[1], T[1] + 1, { size: 60 });
     };
   }
@@ -451,14 +472,14 @@ S.finale = (lt, d, T) => {
   setGrade({ exp: .7, bloom: .55, tint: [1.05, .96, .88] });
   return () => {
     rtxt('Qońırat rayonı', W / 2, BAR + 250, 30, '#ffe2c0', lt, T[1] + 2.2, { ls: 10, f: SANS });
-    rtxt('XI–XIV ásirler', W / 2, BAR + 320, 64, '#fff3dc', lt, T[1] + 2.8, { f: SERIF, w: 700 });
+    gold('XI–XIV ásirler', W / 2, BAR + 320, 72, lt, T[1] + 2.8);
   };
 };
 S.end = (lt) => {
   ACTIVE = null;
   return () => {
     rtxt('QARAQALPAQSTAN TARIYXI', W / 2, 420, 30, '#d9b98a', lt, .4, { w: 500, ls: 16, spread: 24 });
-    rtxt('Buǵraxan esteligi', W / 2, 515, 110, '#fff0d6', lt, 1, { f: SERIF, w: 700, glow: 'rgba(255,170,80,.45)', gb: 40, dur: 2 });
+    gold('Buǵraxan esteligi', W / 2, 515, 116, lt, 1, { st: .06 });
     rtxt('Qońırat rayonı · XI–XIV ásirler', W / 2, 615, 30, '#d9b98a', lt, 2.2, { f: SERIF, it: true, ls: 3 });
   };
 };
@@ -507,7 +528,13 @@ function draw(t) {
   const f = Math.min(eo(p(lt, 0, sc.id === 'intro' ? 2.2 : .6)), eo(p(sc.d - lt, 0, sc.id === 'end' ? 2 : .6)));
   if (f < 1) { x.fillStyle = `rgba(0,0,0,${1 - f})`; x.fillRect(0, 0, W, H); }
   x.fillStyle = '#000'; x.fillRect(0, 0, W, BAR); x.fillRect(0, H - BAR, W, BAR);
+  if (window.SHOW_SUBS) { const s = SUBS.find(q => t >= q.a && t < q.b); if (s) {
+    const k = Math.min(p(t, s.a, s.a + .25), p(s.b - t, 0, .25)); x.font = `500 30px ${SANS}`; x.letterSpacing = '0px';
+    const ws = s.s.split(' '), ls = []; let cur = ''; for (const w of ws) { const tt = cur ? cur + ' ' + w : w; if (x.measureText(tt).width > 1560 && cur) { ls.push(cur); cur = w; } else cur = tt; } ls.push(cur);
+    const y0 = H - BAR / 2 - (ls.length - 1) * 20; ls.forEach((ln, i) => txt(ln, W / 2, y0 + i * 40, 30, '#f3ece0', { w: 500, a: k, gb: 0 }));
+  } }
 }
+window.SHOW_SUBS = !/nosubs/.test(location.search);
 window.draw = draw;
 window.ready = document.fonts.load('700 40px CG').then(() => document.fonts.load('600 40px CG')).then(() => document.fonts.ready).then(() => { draw(0); return true; });
 if (!/render/.test(location.search)) { const t0 = performance.now(); const loop = () => { draw(((performance.now() - t0) / 1000) % TOTAL); requestAnimationFrame(loop); }; window.ready.then(loop); }
