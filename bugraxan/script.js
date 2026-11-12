@@ -11,12 +11,10 @@ window.SCRIPT = [
     'Maǵlıwmatlarda esteliktiń atı 992-jılı Mawarannaxrdı iyelegen Qaraxaniyler áwladınan bolǵan',
     'Buǵraxannıń atı menen baylanıslı ekenligi kórsetiledi.',
     'Sonday-aq, Buǵraxan qalası Xorezmshahlar mámleketiniń orayı bolǵan degen boljawlar da bar.'] },
-  { id: 'int', role: 'Arxeolog-ilimpaz' },
   { id: 'minaret', segs: [
     'Estelikte saqlanǵan minara XI ásirden derek beredi.',
     'Esteliktiń ulıwma maydanı 60 gektardan aslam.',
     'Maǵlıwmatlar bul jerdiń bir waqıtları úlken civilizaciya orayı bolǵanlıǵın kórsetedi.'] },
-  { id: 'int', role: 'Arxeolog-ilimpaz' },
   { id: 'beacon', segs: [
     'Minara tariyxta qanday xızmet atqarǵan?',
     'Boljawlarǵa qaraǵanda, ol xabar beriw ornı bolǵan bolıwı múmkin.',
@@ -24,7 +22,6 @@ window.SCRIPT = [
     'Orta ásirlerde Xorezm minaralarınıń qurılısında ulıwmalıq belgiler bolǵan.',
     'Olar biyik, dóńgelek bolıp, joqarı qaray jińishkerip barǵan.',
     'Buǵraxan minarasınıń biyikligi haqqında anıq maǵlıwmat joq. Bul haqqında tek boljawlar aytıladı.'] },
-  { id: 'int', role: 'Arxeolog-ilimpaz' },
   { id: 'city', segs: [
     'Minaralar qurılısı jaǵınan hár túrli bolıwı múmkin.',
     'Musılman xalıqlarınıń tariyxında minaralar tiykarınan namaz oqıytuǵın orın sıpatında qollanılǵan.',
@@ -32,12 +29,9 @@ window.SCRIPT = [
     'Izertlewler qalanıń úsh bólimnen ibarat bolǵanlıǵın kórsetti.',
     'Onıń oraylıq bóliminde qala meshiti jaylasqan.',
     'Buǵraxan minarası Xorezmshahlar dáwirine tán usılda qurılǵan.'] },
-  { id: 'int', role: 'Arxeolog-ilimpaz' },
   { id: 'flood', segs: [
     'Bul jerlerdi birneshe márte suw basqanına qaramastan, Buǵraxan minarası saqlanıp qalǵan.',
     'Bul onıń qanshelli sheberlik penen qurılǵanlıǵın kórsetedi.'] },
-  { id: 'int', role: 'Arxeolog-ilimpaz' },
-  { id: 'int', role: 'Shákirt · arxeologiya' },
   { id: 'modern', segs: [
     'Buǵraxan esteligin úyreniw jumısları birneshe basqıshta alıp barıldı.',
     'Ózbekstan Respublikası Prezidentiniń 2025-jılı qabıl etilgen 248-sanlı qararına muwapıq,',
@@ -47,12 +41,10 @@ window.SCRIPT = [
     'Burın eski qalalardıń qazıp úyrenilgen orınları jumıslar tamamlanǵannan keyin qaytadan jabılatuǵın edi.',
     'Bul sayaxatshılardıń itibarın tartıwǵa kesent etetuǵın edi.',
     'Endi Buǵraxan esteligin qısı-jazı kóriw hám zıyarat etiw múmkinshiligi jaratıldı.'] },
-  { id: 'int', role: 'Arxeolog-ilimpaz' },
   { id: 'wisdom', segs: [
     'Úlkemiz aymaǵınan tabılǵan hám úyrenilip atırǵan bul qalalar bir juwmaq shıǵarıwǵa múmkinshilik beredi.',
     'Olardıń qurılısında tereń bilim, bay tájiriybe hám sheberlik jámlengen.',
     'Demek, biz jasap atırǵan aymaq orta ásirlerde ilim-bilim rawajlanǵan oraylardıń biri bolǵan.'] },
-  { id: 'int', role: 'Arxeolog-ilimpaz' },
   { id: 'finale', segs: [
     'Qońırat rayonı aymaǵında jaylasqan, XI–XIV ásirlerge tiyisli bul estelikti úyreniw jumısları ele de dawam etedi.',
     'Onıń qatlamlarında ele de talay maǵlıwmatlar hám biybaha derekler bar ekenligi sózsiz.'] },
