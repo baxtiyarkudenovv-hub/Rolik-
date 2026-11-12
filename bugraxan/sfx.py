@@ -86,7 +86,7 @@ def scan(t, g=.18):
     pan = np.linspace(-.9, .9, n); add(fx, np.stack([s * np.sqrt((1 - pan) / 2), s * np.sqrt((1 + pan) / 2)], 1) * 1.4, t, g)
 
 # ambiences by shot image
-MARKET = {'01', '04', '06', '07', '09', '23'}
+MARKET = {'01', '04', '06', '07', '09', '23', '30', '26', '24', '28'}
 for s in TL['shots']:
     a, b, img = s['a'], s['b'], s['img']; d = b - a + .6
     if s['scene'] == 'exped': projector(a, d); wind(a, d, .04)
@@ -94,7 +94,7 @@ for s in TL['shots']:
     elif img == '12': water(a, d, .03); wind(a, d, .05)
     elif img == 'BUILD': wind(a, d, .05); build_site(a + 2, d - 4)
     elif img in MARKET: murmur(a, d, .045); wind(a, d, .035)
-    elif img in ('16', '17', '18', '13', '20'): room(a, d, .05); wind(a, d, .03)
+    elif img in ('16', '17', '18', '13', '20', '29', '27'): room(a, d, .05); wind(a, d, .03)
     else: wind(a, d, .07)
 for sc in TL['scenes']:
     if sc['id'] == 'intro': wind(0, sc['d'] + 1, .08); riser(2.4, 2.4, .12); boom(2.4, .7); shimmer(2.6, .1)
