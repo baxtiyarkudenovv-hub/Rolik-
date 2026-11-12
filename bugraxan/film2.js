@@ -25,30 +25,30 @@ const SHOTS = {
 };
 
 /* ================= GOLD KEYWORDS & INFOGRAPHICS ================= */
+// Ekrandaǵı jazıwlar — tek diktor tekstindegi sózler, sanlar hám sáneler (qaraqalpaq latın jazıwında).
 const KEYS = {
-  exped: [[0, 'S. P. Tolstov', 'Xorezm arxeologiya hám etnografiya ekspediciyası']],
-  name: [[0, 'Buǵraxan?', 'Atamanıń sırı', { size: 74 }], [3, 'Xorezmshahlar mámleketiniń orayı?', 'Boljawlar', { size: 52 }]],
-  minaret: [[2, 'Úlken civilizaciya orayı', 'Bir waqıtları', { size: 56 }]],
-  beacon: [[2, 'Jámiyetlik orın', 'Minara átirapı'], [3, 'Ulıwmalıq belgiler', 'Xorezm minaraları', { size: 56 }]],
-  city: [[1, 'Namaz oqıytuǵın orın', 'Musılman xalıqlarınıń tariyxında', { size: 54 }], [4, 'Qala meshiti', 'Oraylıq bólimde'], [5, 'Xorezmshahlar dáwiri', 'Minara usılı', { size: 54 }]],
-  flood: [[1, 'Sheberlik', 'Qurılısında', { size: 76 }]],
-  modern: [[0, 'Birneshe basqısh', 'Úyreniw jumısları'], [2, 'Turistlik baǵdarlar', 'Jańa arxeologiyalıq orınlar', { size: 56 }], [3, 'Berdaq atındaǵı QMU', 'Arxeologiya kafedrası', { size: 56 }], [4, 'Qayta tiklew', 'hám abadanlastırıw'], [5, 'Qaytadan jabılatuǵın edi', 'Burın', { size: 54 }]],
-  wisdom: [[0, 'Úlkemizdiń qalaları', 'Bir juwmaq', { size: 56 }], [2, 'Ilim-bilim orayı', 'Orta ásirlerde', { size: 66 }]],
-  finale: [[1, 'Biybaha derekler', 'Qatlamlarda', { size: 64 }]],
+  exped: [[0, 'S. P. Tolstov', 'Xorezm arxeologiya hám etnografiya ekspediciyası', { size: 66 }]],
+  name: [[0, 'Bul estelik ne ushın Buǵraxan dep atalǵan?', null, { size: 46 }], [2, 'Qaraxaniyler áwladınan bolǵan Buǵraxan', null, { size: 48 }], [3, 'Xorezmshahlar mámleketiniń orayı', 'boljawlar', { size: 52 }]],
+  minaret: [[2, 'Úlken civilizaciya orayı', null, { size: 58 }]],
+  beacon: [[2, 'Jámiyetlik orın', 'minaranıń átirapı'], [3, 'Ulıwmalıq belgiler', 'Xorezm minaraları', { size: 58 }], [5, 'Biyikligi haqqında anıq maǵlıwmat joq', 'tek boljawlar aytıladı', { size: 46 }]],
+  city: [[1, 'Namaz oqıytuǵın orın', 'musılman xalıqlarınıń tariyxında', { size: 56 }], [4, 'Qala meshiti', 'oraylıq bóliminde'], [5, 'Xorezmshahlar dáwirine tán usıl', null, { size: 52 }]],
+  flood: [[1, 'Sheberlik penen qurılǵan', null, { size: 60 }]],
+  modern: [[0, 'Birneshe basqısh', 'úyreniw jumısları'], [2, 'Jańa turistlik baǵdarlar', 'jańa arxeologiyalıq orınlardı úyreniw', { size: 54 }], [3, 'Berdaq atındaǵı Qaraqalpaq mámleketlik universiteti', 'arxeologiya kafedrası', { size: 42 }], [4, 'Qayta tiklew hám abadanlastırıw', null, { size: 54 }], [5, 'Qaytadan jabılatuǵın edi', 'burın', { size: 54 }]],
+  wisdom: [[0, 'Úlkemiz aymaǵınan tabılǵan qalalar', null, { size: 52 }], [2, 'Ilim-bilim rawajlanǵan oray', 'orta ásirlerde', { size: 58 }]],
+  finale: [[1, 'Biybaha derekler', 'qatlamlarında', { size: 64 }]],
 };
-// infographics: [segment, type, params]
 const INFO = {
-  exped: [[1, 'timeline', { pts: [['1946', 'karta'], ['50–60', 'jıllar']], label: 'XX ÁSIR', x: 1180, y: 300 }], [2, 'stamp', { big: '1946', small: 'ARXEOLOGIYALIQ KARTA', x: 1500, y: 320 }]],
-  name: [[1, 'counter', { from: 900, to: 992, label: 'JIL', sub: 'Mawarannaxr', x: 1480, y: 330 }], [2, 'flow', { a: 'Qaraxaniyler', b: 'Mawarannaxr', x: 900, y: 860 }]],
-  minaret: [[0, 'timescan', { x: 430, y: 420 }], [1, 'area', { n: 60, unit: 'gektar', note: '≈ 600 000 m²', x: 1480, y: 330 }]],
-  beacon: [[0, 'question', { q: 'Qanday xızmet?', x: 1380, y: 300 }], [1, 'signal', { ax: .89, ay: .06, label: 'Xabar beriw ornı' }], [4, 'triad', { x: 1460, y: 420 }], [5, 'measure', { x: 1500, label: 'Biyikligi' }]],
+  exped: [[1, 'century', { big: '50–60-jıllar', small: 'XX ásir', x: 1440, y: 380 }], [2, 'stamp', { big: '1946-jılı', small: 'arxeologiyalıq kartaǵa túsirilgen', x: 1460, y: 340 }]],
+  name: [[1, 'century', { big: '992-jılı', small: 'Mawarannaxr', x: 1480, y: 380 }]],
+  minaret: [[0, 'century', { big: 'XI ásir', small: 'minara', x: 430, y: 420 }], [1, 'area', { n: 60, unit: 'gektardan aslam', x: 1480, y: 330 }]],
+  beacon: [[0, 'question', { q: 'Qanday xızmet atqarǵan?', x: 1380, y: 300 }], [1, 'signal', { ax: .89, ay: .06, label: 'Xabar beriw ornı' }], [4, 'triad', { x: 1460, y: 420 }]],
   city: [[2, 'map', { x: 1460, y: 540 }], [3, 'parts', { x: 1460, y: 420 }]],
   flood: [[0, 'water', { label: 'Birneshe márte suw basqan', x: 1440, y: 300 }], [1, 'check', { label: 'Saqlanıp qalǵan', x: 1440, y: 300 }]],
-  modern: [[1, 'doc', { n: '№ 248', y2: '2025', label: 'Prezident qararı', x: 1460, y: 410 }], [7, 'seasons', { x: 1460, y: 330 }]],
+  modern: [[1, 'doc', { n: '248-sanlı qarar', y2: '2025', label: 'Ózbekstan Respublikası Prezidentiniń qararı', x: 1460, y: 410 }], [7, 'seasons', { x: 1460, y: 330 }]],
   wisdom: [[1, 'icons3', { x: 1440, y: 360 }]],
-  finale: [[0, 'century', { big: 'XI–XIV', small: 'ÁSIRLER · QOŃIRAT RAYONI', x: 1440, y: 360 }], [1, 'strata', { x: 1500, y: 300 }]],
+  finale: [[0, 'century', { big: 'XI–XIV', small: 'ásirler · Qońırat rayonı', x: 1440, y: 360 }]],
 };
-const CH = { exped: ['I', 'Ashılıw'], name: ['II', 'Atamanıń sırı'], minaret: ['III', 'Minara'], beacon: ['IV', 'Minaranıń xızmeti'], city: ['V', 'Qala hám meshit'], flood: ['VI', 'Suw hám waqıt'], modern: ['VII', 'Jańa bet'], wisdom: ['VIII', 'Ilim orayı'], finale: ['IX', 'Miyras'] };
+const CH = {};
 
 /* ================= TIMELINE ================= */
 const CPS = 13, segDur = s => Math.max(3.4, s.length / CPS + .8);
@@ -183,7 +183,7 @@ function keyword(word, sub, lt, t0, t1, o = {}) {
   const X = 150, Y = BAR + PH - 150; backing(X + 300, Y, 560, k * .85);
   x.save(); x.globalAlpha = k; x.fillStyle = GOLD; x.fillRect(X, Y - 52, 3, sub ? 106 : 70); x.restore();
   gold(word, X + 26, Y - 16, o.size || 62, lt, t0, { al: 'left', a: 1 - p(lt, t1 - .6, t1) });
-  if (sub) txt(sub.toUpperCase(), X + 28 + (1 - k) * 22, Y + 34, 20, '#ecd2a8', { al: 'left', a: k * .95, ls: 5 });
+  if (sub) txt(sub, X + 28 + (1 - k) * 22, Y + 38, 30, '#ecd2a8', { al: 'left', a: k * .95, ls: 1, f: SERIF, it: true });
 }
 // line-art helpers
 function stroke(a, w = 2.5, glow = 14) { x.strokeStyle = GOLD; x.lineWidth = w; x.lineCap = 'round'; x.lineJoin = 'round'; x.globalAlpha = a; x.shadowColor = 'rgba(255,180,70,.7)'; x.shadowBlur = glow; x.stroke(); x.shadowBlur = 0; }
@@ -202,8 +202,8 @@ const IG = {
   },
   stamp(o, l, a) { const k = p(l, .1, .55); if (k <= 0) return; backing(o.x, o.y, 330, a * .9);
     x.save(); x.translate(o.x, o.y); x.rotate(-.08); const s = 1 + 1.4 * (1 - eo(k)); x.scale(s, s); x.globalAlpha = eo(k) * a;
-    x.strokeStyle = goldGrad(-170, -70, 170, 70); x.lineWidth = 4; x.shadowColor = 'rgba(255,170,60,.7)'; x.shadowBlur = 16; x.strokeRect(-170, -78, 340, 156); x.lineWidth = 1.5; x.strokeRect(-158, -66, 316, 132); x.restore();
-    gold(o.big, o.x, o.y - 12, 96, l, .35, { st: .06, a }); small(o.small, o.x, o.y + 50, eo(p(l, .6, 1.2)) * a, { size: 15 }); },
+    x.strokeStyle = goldGrad(-170, -70, 170, 70); x.lineWidth = 4; x.shadowColor = 'rgba(255,170,60,.7)'; x.shadowBlur = 16; x.strokeRect(-210, -78, 420, 156); x.lineWidth = 1.5; x.strokeRect(-198, -66, 396, 132); x.restore();
+    gold(o.big, o.x, o.y - 12, 96, l, .35, { st: .06, a }); gold(o.small, o.x, o.y + 120, 34, l, .9, { it: true, st: .025, a }); },
   counter(o, l, a) { backing(o.x, o.y, 360, a * .9); const k = eo(p(l, 0, 2.2)), n = Math.round(lerp(o.from, o.to, k));
     x.save(); x.globalAlpha = a * eo(p(l, 0, .3)); x.font = `700 150px ${SERIF}`; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillStyle = goldGrad(o.x - 160, o.y - 80, o.x + 160, o.y + 60); x.shadowColor = 'rgba(255,170,60,.6)'; x.shadowBlur = 30; x.fillText(String(n), o.x, o.y); x.restore();
     line(o.x - 150, o.y + 82, o.x + 150, o.y + 82, eo(p(l, .3, 1.4)), a, 2); small(o.label, o.x, o.y + 112, eo(p(l, .8, 1.6)) * a, { size: 20, ls: 12 });
@@ -212,19 +212,19 @@ const IG = {
     gold(o.a, X - 250, Y, 44, l, 0, { a }); line(X - 90, Y, X + 70, Y, eo(p(l, .8, 1.8)), a, 3);
     const k = eo(p(l, 1.5, 1.9)); if (k > 0) { x.beginPath(); x.moveTo(X + 52, Y - 14); x.lineTo(X + 72, Y); x.lineTo(X + 52, Y + 14); stroke(a * k, 3); }
     gold(o.b, X + 250, Y, 44, l, 1.6, { a }); small('992 · ÍYELEW', X, Y + 48, eo(p(l, 2, 2.8)) * a, { size: 15, ls: 6 }); },
-  century(o, l, a) { backing(o.x, o.y, 360, a * .95); const r = o.big.length > 3 ? 175 : 130;
+  century(o, l, a) { backing(o.x, o.y, 360, a * .95); const r = o.big.length > 5 ? 190 : 150;
     arc(o.x, o.y, r, eo(p(l, 0, 1.6)), a * .9, 2); arc(o.x, o.y, r + 12, eo(p(l, .3, 1.9)), a * .45, 1);
     for (let i = 0; i < 24; i++) { const ang = i / 24 * 6.283 - 1.57, k = p(l, .2 + i * .04, .5 + i * .04); if (k > 0) line(o.x + Math.cos(ang) * (r + 18), o.y + Math.sin(ang) * (r + 18), o.x + Math.cos(ang) * (r + 18 + (i % 6 ? 6 : 14)), o.y + Math.sin(ang) * (r + 18 + (i % 6 ? 6 : 14)), 1, a * .7 * k, 1.5); }
-    gold(o.big, o.x, o.y - 10, o.big.length > 3 ? 92 : 120, l, .5, { st: .08, a }); small(o.small, o.x, o.y + (o.big.length > 3 ? 62 : 70), eo(p(l, 1.2, 2)) * a, { size: o.small.length > 10 ? 14 : 20, ls: o.small.length > 10 ? 4 : 12 }); },
+    gold(o.big, o.x, o.y - 10, o.big.length > 9 ? 64 : o.big.length > 5 ? 80 : 104, l, .5, { st: .06, a }); gold(o.small, o.x, o.y + 66, 32, l, 1.2, { it: true, st: .03, a }); },
   area(o, l, a) { backing(o.x, o.y + 20, 380, a * .95); const S = 170, X = o.x - S / 2, Y = o.y - S / 2 - 10, k = eo(p(l, 0, 1.8));
     x.save(); x.beginPath(); const per = 4 * S, d = per * k; let r = d; x.moveTo(X, Y); [[S, 0], [0, S], [-S, 0], [0, -S]].reduce(([px, py], [dx, dy]) => { const L = Math.abs(dx + dy), u = cl(r / L); x.lineTo(px + dx * u, py + dy * u); r -= L; return [px + dx, py + dy]; }, [X, Y]); stroke(a, 2.5); x.restore();
     x.save(); x.globalAlpha = a * .15 * eo(p(l, 1.2, 2)); x.fillStyle = '#e7bd6a'; for (let i = 0; i < 8; i++) for (let j = 0; j < 8; j++) if ((i + j) % 2) x.fillRect(X + i * S / 8, Y + j * S / 8, S / 8, S / 8); x.restore();
-    const n = Math.round(o.n * eo(p(l, .5, 2.6))); x.save(); x.globalAlpha = a; x.font = `700 92px ${SERIF}`; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillStyle = goldGrad(o.x - 80, o.y - 60, o.x + 80, o.y + 40); x.shadowColor = 'rgba(0,0,0,.8)'; x.shadowBlur = 16; x.fillText(n + '+', o.x, o.y - 10); x.restore();
-    small(o.unit.toUpperCase(), o.x, o.y + S / 2 + 30, eo(p(l, 1.2, 2)) * a, { size: 22, ls: 12 }); small(o.note, o.x, o.y + S / 2 + 62, eo(p(l, 1.8, 2.6)) * a, { size: 17, ls: 2, col: '#d9c39c', w: 500 }); },
+    const n = Math.round(o.n * eo(p(l, .5, 2.6))); x.save(); x.globalAlpha = a; x.font = `700 92px ${SERIF}`; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillStyle = goldGrad(o.x - 80, o.y - 60, o.x + 80, o.y + 40); x.shadowColor = 'rgba(0,0,0,.8)'; x.shadowBlur = 16; x.fillText(String(n), o.x, o.y - 10); x.restore();
+    gold(o.unit, o.x, o.y + S / 2 + 36, 38, l, 1.2, { it: true, a }); },
   question(o, l, a) { backing(o.x, o.y, 360, a * .9); arc(o.x, o.y - 10, 92, eo(p(l, 0, 1.4)), a, 2); gold('?', o.x, o.y - 6, 120, l, .3, { a }); gold(o.q, o.x, o.y + 130, 40, l, .8, { it: true, a }); },
   signal(o, l, a, s, t) { const [X, Y] = projImg(s, t, o.ax, o.ay);
     for (let i = 0; i < 4; i++) { const r = ((l * .45 + i / 4) % 1); x.save(); x.beginPath(); x.ellipse(X, Y, 30 + r * 520, (30 + r * 520) * .42, 0, 0, 7); stroke(a * (1 - r) * .8 * eo(p(l, 0, .6)), 2); x.restore(); }
-    dot(X, Y, 8, a * eo(p(l, 0, .5))); backing(520, BAR + 170, 380, a * .9); gold(o.label, 520, BAR + 160, 52, l, .6, { a }); small('BOLJAW', 520, BAR + 210, eo(p(l, 1, 1.8)) * a, { ls: 10 }); },
+    dot(X, Y, 8, a * eo(p(l, 0, .5))); backing(520, BAR + 170, 380, a * .9); gold(o.label, 520, BAR + 160, 52, l, .6, { a }); small('boljawlarǵa qaraǵanda', 520, BAR + 214, eo(p(l, 1, 1.8)) * a, { size: 26, ls: 1, w: 500 }); },
   triad(o, l, a) { backing(o.x, o.y, 400, a * .95); const items = [['biyik', 'up'], ['dóńgelek', 'circle'], ['jińishkergen', 'taper']];
     items.forEach(([s, ic], i) => { const Y = o.y - 140 + i * 140, X = o.x - 120, t0 = i * .9, k = eo(p(l, t0, t0 + 1)); if (k <= 0) return;
       x.save(); if (ic === 'up') { line(X, Y + 40, X, Y - 40, k, a, 3); if (k > .8) { x.beginPath(); x.moveTo(X - 14, Y - 26); x.lineTo(X, Y - 42); x.lineTo(X + 14, Y - 26); stroke(a, 3); } }
@@ -237,9 +237,10 @@ const IG = {
   compass(o, l, a) { backing(o.x, o.y + 20, 380, a * .95); const r = 90, k = eo(p(l, 0, 1.4)); arc(o.x, o.y, r, k, a, 2); arc(o.x, o.y, r - 12, k, a * .5, 1);
     const n = eo(p(l, .8, 1.6)); if (n > 0) { x.save(); x.beginPath(); x.moveTo(o.x, o.y - r * .95 * n); x.lineTo(o.x + 18, o.y); x.lineTo(o.x, o.y + r * .5 * n); x.lineTo(o.x - 18, o.y); x.closePath(); x.globalAlpha = a; x.fillStyle = goldGrad(o.x - 20, o.y - r, o.x + 20, o.y); x.shadowColor = 'rgba(255,170,60,.7)'; x.shadowBlur = 16; x.fill(); x.restore(); }
     gold('ARQA', o.x, o.y - r - 34, 30, l, 1, { ls: 8, w: 700, f: SANS, a }); gold(o.label, o.x, o.y + r + 56, 50, l, 1.3, { a }); small(o.sub.toUpperCase(), o.x, o.y + r + 102, eo(p(l, 1.8, 2.4)) * a, { size: 16 }); },
-  parts(o, l, a) { backing(o.x, o.y, 420, a * .95); const R = [[220, 150, 'III', 'Rabad'], [140, 96, 'II', 'Shahristan'], [62, 44, 'I', 'Oraylıq bólim']];
+  parts(o, l, a) { backing(o.x, o.y, 420, a * .95); const R = [[220, 150, 'III', ''], [140, 96, 'II', ''], [62, 44, 'I', '']];
     R.forEach(([rw, rh, n, s], i) => { const k = eo(p(l, i * .9, i * .9 + 1.2)); if (k <= 0) return; x.save(); x.beginPath(); x.ellipse(o.x, o.y, rw, rh, 0, -1.57, -1.57 + 6.283 * k); stroke(a, 2.2 + i * .4); x.restore();
-      gold(n, o.x + rw * .72, o.y - rh * .72 - 10, 34, l, i * .9 + .6, { a }); small(s.toUpperCase(), o.x + rw * .72 + 70, o.y - rh * .72 - 10, eo(p(l, i * .9 + .9, i * .9 + 1.5)) * a, { size: 14, al: 'left', ls: 3 }); });
+      gold(n, o.x + rw * .72, o.y - rh * .72 - 10, 34, l, i * .9 + .6, { a }); });
+    gold('Úsh bólim', o.x, o.y - 210, 54, l, .2, { a });
     const m = eo(p(l, 2.8, 3.4)); if (m > 0) { x.save(); x.globalAlpha = a * m; x.fillStyle = goldGrad(o.x - 20, o.y - 20, o.x + 20, o.y + 10); x.beginPath(); x.arc(o.x, o.y + 4, 16, Math.PI, 0); x.fill(); x.fillRect(o.x - 22, o.y + 4, 44, 12); x.restore(); } },
   water(o, l, a) { backing(o.x, o.y + 30, 420, a * .95); for (let w = 0; w < 3; w++) { const k = eo(p(l, w * .4, w * .4 + 1.2)); if (k <= 0) continue; x.save(); x.beginPath(); for (let i = 0; i <= 60 * k; i++) { const xx = o.x - 150 + i * 5, yy = o.y + w * 26 + Math.sin(i * .35 + l * 3 + w) * 8; i ? x.lineTo(xx, yy) : x.moveTo(xx, yy); } stroke(a * (1 - w * .25), 2.5); x.restore(); }
     gold(o.label, o.x, o.y + 120, 40, l, .8, { it: true, a }); },
@@ -248,12 +249,12 @@ const IG = {
   doc(o, l, a) { backing(o.x, o.y, 420, a * .95); const X = o.x - 110, Y = o.y - 150, k = eo(p(l, 0, 1.4));
     x.save(); x.beginPath(); x.moveTo(X, Y); x.lineTo(X + 180 * k, Y); if (k > .5) { x.lineTo(X + 180, Y + 260 * cl(k * 2 - 1)); } stroke(a, 2.5); x.beginPath(); x.moveTo(X, Y); x.lineTo(X, Y + 260 * k); if (k > .5) x.lineTo(X + 180 * cl(k * 2 - 1), Y + 260); stroke(a, 2.5); x.restore();
     for (let i = 0; i < 6; i++) line(X + 24, Y + 100 + i * 22, X + 24 + (i === 5 ? 70 : 130), Y + 100 + i * 22, eo(p(l, .8 + i * .1, 1.2 + i * .1)), a * .55, 2);
-    gold(o.n, X + 90, Y + 48, 44, l, .9, { a }); const st = p(l, 1.6, 1.95); if (st > 0) { x.save(); x.translate(X + 170, Y + 230); x.scale(1 + 1.2 * (1 - eo(st)), 1 + 1.2 * (1 - eo(st))); x.beginPath(); x.arc(0, 0, 44, 0, 7); stroke(a * eo(st), 3); x.restore(); gold(o.y2, X + 170, Y + 232, 30, l, 1.8, { a }); }
-    small(o.label.toUpperCase(), o.x, Y + 300, eo(p(l, 2, 2.6)) * a, { ls: 6 }); },
+    gold(o.n, o.x, Y - 40, 44, l, .9, { a }); const st = p(l, 1.6, 1.95); if (st > 0) { x.save(); x.translate(X + 170, Y + 230); x.scale(1 + 1.2 * (1 - eo(st)), 1 + 1.2 * (1 - eo(st))); x.beginPath(); x.arc(0, 0, 44, 0, 7); stroke(a * eo(st), 3); x.restore(); gold(o.y2, X + 170, Y + 232, 30, l, 1.8, { a }); }
+    small(o.label, o.x, Y + 300, eo(p(l, 2, 2.6)) * a, { size: 24, ls: 1, w: 500 }); },
   seasons(o, l, a) { backing(o.x, o.y + 30, 420, a * .95); const X1 = o.x - 110, X2 = o.x + 110, Y = o.y, k1 = eo(p(l, 0, 1.2)), k2 = eo(p(l, .8, 2));
     for (let i = 0; i < 6; i++) { const an = i / 6 * 6.283; line(X1, Y, X1 + Math.cos(an) * 56, Y + Math.sin(an) * 56, k1, a, 2.5); }
     arc(X2, Y, 30, k2, a, 2.5); for (let i = 0; i < 12; i++) { const an = i / 12 * 6.283; if (k2 > .5) line(X2 + Math.cos(an) * 42, Y + Math.sin(an) * 42, X2 + Math.cos(an) * 60, Y + Math.sin(an) * 60, cl(k2 * 2 - 1), a, 2.5); }
-    gold('Qısı', X1, Y + 100, 44, l, .5, { it: true, a }); gold('Jazı', X2, Y + 100, 44, l, 1.3, { it: true, a }); small('ZIYARAT ETIW MÚMKIN', o.x, Y + 160, eo(p(l, 2, 2.8)) * a, { ls: 6 }); },
+    gold('Qısı', X1, Y + 100, 44, l, .5, { it: true, a }); gold('Jazı', X2, Y + 100, 44, l, 1.3, { it: true, a }); small('kóriw hám zıyarat etiw múmkinshiligi', o.x, Y + 160, eo(p(l, 2, 2.8)) * a, { size: 24, ls: 1, w: 500 }); },
   icons3(o, l, a) { backing(o.x, o.y, 420, a * .95); const it = [['tereń bilim', 'book'], ['bay tájiriybe', 'star'], ['sheberlik', 'hand']];
     it.forEach(([s, ic], i) => { const Y = o.y - 130 + i * 130, X = o.x - 140, t0 = i * 1, k = eo(p(l, t0, t0 + 1)); if (k <= 0) return; x.save();
       if (ic === 'book') { x.beginPath(); x.moveTo(X, Y - 26); x.lineTo(X, Y + 26); x.moveTo(X, Y - 26); x.quadraticCurveTo(X - 18, Y - 34, X - 40 * k, Y - 26); x.lineTo(X - 40 * k, Y + 26); x.quadraticCurveTo(X - 18, Y + 18, X, Y + 26); x.moveTo(X, Y - 26); x.quadraticCurveTo(X + 18, Y - 34, X + 40 * k, Y - 26); x.lineTo(X + 40 * k, Y + 26); x.quadraticCurveTo(X + 18, Y + 18, X, Y + 26); stroke(a, 2.5); }
@@ -263,13 +264,13 @@ const IG = {
   map(o, l, a) { backing(o.x, o.y, 520, a); backing(o.x, o.y, 380, a * .8); x.save(); x.translate(o.x, o.y); x.scale(.62, .62); x.translate(-o.x, -o.y); const X = o.x, Y = o.y, k1 = eo(p(l, 0, 1.4)), k2 = eo(p(l, .6, 2.2)), k3 = eo(p(l, 1.6, 2.8));
     const sea = [[-210, -230], [-120, -260], [-40, -240], [10, -190], [-10, -130], [-80, -110], [-170, -120], [-230, -170]];
     const poly = (pts, k, w, al) => { x.beginPath(); const n = pts.length, m = n * k; for (let i = 0; i <= m; i++) { const q = pts[Math.floor(i) % n], q2 = pts[(Math.floor(i) + 1) % n], f = i - Math.floor(i); const px = X + q[0] + (q2[0] - q[0]) * f, py = Y + q[1] + (q2[1] - q[1]) * f; i ? x.lineTo(px, py) : x.moveTo(px, py); } stroke(al, w); };
-    poly(sea, k1, 2, a * .9); small('ARAL', X - 110, Y - 185, k1 * a, { size: 24, ls: 8 });
+    poly(sea, k1, 2, a * .9); 
     x.beginPath(); const rv = [[260, 230], [180, 150], [90, 60], [10, -20], [-40, -110]]; rv.forEach((q, i) => i <= rv.length * k2 ? (i ? x.lineTo(X + q[0], Y + q[1]) : x.moveTo(X + q[0], Y + q[1])) : 0); stroke(a * .7, 2);
     const st = [[-260, -40], [-80, -70], [120, -30], [280, 60], [300, 200], [60, 250], [-200, 220], [-290, 90]];
     poly(st, k2, 1.5, a * .6);
     x.save(); x.setLineDash([2, 0]); x.beginPath(); for (let i = 0; i <= 30 * k3; i++) { const f = i / 30, q = [lerp(-260, 120, f), lerp(-40, -30, f) - Math.sin(f * 3.14) * 40]; i ? x.lineTo(X + q[0], Y + q[1]) : x.moveTo(X + q[0], Y + q[1]); } stroke(a, 4, 22); x.restore();
     const pb = eo(p(l, 2.6, 3.2)); if (pb > 0) { const bx = X - 70, by = Y - 70; for (let i = 0; i < 3; i++) { const r = (l * .6 + i / 3) % 1; x.save(); x.beginPath(); x.arc(bx, by, 6 + r * 46, 0, 7); stroke(a * pb * (1 - r), 2); x.restore(); } dot(bx, by, 7, a * pb); gold('Buǵraxan', bx, by + 50, 44, l, 2.8, { a }); }
-    gold('Arqa shegara', X, Y - 310, 70, l, 1.8, { a }); small('XOREZMSHAHLAR MÁMLEKETI', X, Y + 300, eo(p(l, 2, 2.8)) * a, { size: 24, ls: 6 }); x.restore(); },
+    gold('Arqa shegara', X, Y - 310, 70, l, 1.8, { a }); gold('Xorezmshahlar mámleketi', X, Y + 310, 44, l, 2, { it: true, a }); x.restore(); },
   timescan(o, l, a) { backing(o.x, o.y, 380, a * .95); const k = eo(p(l, .2, 2.2)), yr = Math.round(lerp(2025, 1000, k));
     const r = 130; arc(o.x, o.y, r, eo(p(l, 0, 1.6)), a * .9, 2); arc(o.x, o.y, r + 12, eo(p(l, .3, 1.9)), a * .45, 1);
     if (k < .97) { x.save(); x.globalAlpha = a; x.font = `700 92px ${SERIF}`; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillStyle = goldGrad(o.x - 100, o.y - 50, o.x + 100, o.y + 40); x.shadowColor = 'rgba(255,170,60,.6)'; x.shadowBlur = 24; x.fillText(String(yr), o.x, o.y - 8); x.restore(); small('JIL', o.x, o.y + 62, a * (1 - k), { size: 18, ls: 12 }); }
@@ -315,10 +316,10 @@ async function draw(t) {
   for (let X = -ox; X < W; X += 256) for (let Y = BAR - oy; Y < BAR + PH; Y += 256) x.drawImage(gcn, X, Y); x.restore();
   // titles
   if (sc.id === 'intro') { const out = 1 - p(lt, sc.d - 1.4, sc.d - .2); backing(W / 2, 530, 900, out * .8);
-    txt('QARAQALPAQSTAN TARIYXI', W / 2, 420, 30, '#f3dcb4', { w: 500, ls: 16, a: eo(p(lt, 1.2, 2.6)) * out });
+    gold('Qaraqalpaqstan tariyxı', W / 2, 420, 46, lt, 1.2, { st: .03, a: out });
     gold('Buǵraxan esteligi', W / 2, 522, 136, lt, 2.4, { st: .07, a: out }); line(W / 2 - 260, 600, W / 2 + 260, 600, eo(p(lt, 3.6, 5)), out * .8, 1.5);
-    gold('XI–XIV ásirler  ·  Qońırat rayonı', W / 2, 640, 34, lt, 4.4, { it: true, ls: 2, st: .025, a: out }); }
-  if (sc.id === 'end') { const o = 1 - p(lt, sc.d - 1.5, sc.d - .3); txt('QARAQALPAQSTAN TARIYXI', W / 2, 420, 30, '#d9b98a', { w: 500, ls: 16, a: eo(p(lt, .3, 1.5)) * o }); gold('Buǵraxan esteligi', W / 2, 520, 120, lt, .8, { st: .06, a: o }); }
+  }
+  if (sc.id === 'end') { const o = 1 - p(lt, sc.d - 1.5, sc.d - .3); gold('Qaraqalpaqstan tariyxı', W / 2, 420, 44, lt, .3, { st: .03, a: o }); gold('Buǵraxan esteligi', W / 2, 520, 120, lt, .8, { st: .06, a: o }); }
   // chapter card (centered, gold) at the start of each chapter
   if (CH[sc.id]) { const [n, nm] = CH[sc.id], k = eo(p(lt, .25, 1)) * (1 - p(lt, 2.1, 2.7)); if (k > 0) { backing(W / 2, H / 2, 700, k * .9); gold(n, W / 2, H / 2 - 50, 70, lt, .25, { a: 1 - p(lt, 2.1, 2.7), st: .1 }); line(W / 2 - 120 * k, H / 2 + 2, W / 2 + 120 * k, H / 2 + 2, 1, k * .8, 1.5); gold(nm, W / 2, H / 2 + 52, 54, lt, .5, { it: true, a: 1 - p(lt, 2.1, 2.7) }); }
     const k2 = eo(p(lt, 2.7, 3.5)) * (1 - p(lt, 7, 8)); if (k2 > 0) { x.save(); x.globalAlpha = k2; x.fillStyle = GOLD; x.fillRect(110, BAR + 46, 46, 2); x.restore(); txt(`${n} · ${nm}`.toUpperCase(), 172, BAR + 47, 20, '#f6e2c0', { a: k2, al: 'left', ls: 6 }); } }
@@ -328,7 +329,7 @@ async function draw(t) {
   const f = Math.min(eo(p(lt, 0, sc.id === 'intro' ? 2 : .45)), eo(p(sc.d - lt, 0, sc.id === 'end' ? 1.5 : .45)));
   if (f < 1) { x.fillStyle = `rgba(0,0,0,${1 - f})`; x.fillRect(0, 0, W, H); }
   x.fillStyle = '#000'; x.fillRect(0, 0, W, BAR); x.fillRect(0, H - BAR, W, BAR);
-  if (!/nosubs/.test(location.search)) { const s = SUBS.find(q => t >= q.a && t < q.b); if (s) {
+  if (/subs/.test(location.search)) { const s = SUBS.find(q => t >= q.a && t < q.b); if (s) {
     const k = Math.min(p(t, s.a, s.a + .25), p(s.b - t, 0, .25)); x.font = `500 30px ${SANS}`; x.letterSpacing = '0px';
     const ws = s.s.split(' '), ls = []; let cur = ''; for (const w of ws) { const tt = cur ? cur + ' ' + w : w; if (x.measureText(tt).width > 1560 && cur) { ls.push(cur); cur = w; } else cur = tt; } ls.push(cur);
     const y0 = H - BAR / 2 - (ls.length - 1) * 20; ls.forEach((ln, i) => txt(ln, W / 2, y0 + i * 40, 30, '#f3ece0', { w: 500, a: k, gb: 0 }));
