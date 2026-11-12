@@ -20,7 +20,7 @@ async function part(k, a, b) {
   ff.stdin.end(); await new Promise(r => ff.on('close', r)); await br.close(); return f;
 }
 (async () => {
-  const srv = await serve(); url = srv.url + '/film3d.html?render';
+  const srv = await serve(); url = srv.url + '/' + (process.env.PAGE || 'film3d') + '.html?render';
   const br = await chromium.launch(); const pg = await br.newPage(); await pg.goto(url); await pg.waitForFunction(() => window.TIMELINE, null, { timeout: 300000 });
   const tl = await pg.evaluate(() => window.TIMELINE); await br.close();
   fs.writeFileSync(path.join(__dirname, 'timeline.json'), JSON.stringify(tl, null, 1));
