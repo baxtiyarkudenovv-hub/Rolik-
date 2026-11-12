@@ -1,305 +1,919 @@
 {
  "fps": 25,
- "total": 287.1846153846154,
+ "total": 293.7846153846154,
  "scenes": [
   {
    "id": "intro",
    "t0": 0,
-   "d": 10,
+   "d": 11,
    "segs": []
   },
   {
    "id": "exped",
-   "t0": 10,
-   "d": 19.308,
+   "t0": 11,
+   "d": 19.908,
    "segs": [
-    11.4,
-    19.892,
-    23.615
+    13.2,
+    21.692,
+    25.415
    ]
   },
   {
    "id": "name",
-   "t0": 29.308,
-   "d": 29.723,
+   "t0": 30.908,
+   "d": 30.323,
    "segs": [
-    30.708,
-    37.354,
-    45.154,
-    50.108
+    33.108,
+    39.754,
+    47.554,
+    52.508
    ]
   },
   {
    "id": "minaret",
-   "t0": 59.031,
-   "d": 18.923,
+   "t0": 61.231,
+   "d": 19.523,
    "segs": [
-    60.431,
-    65.154,
-    69.415
+    63.431,
+    68.154,
+    72.415
    ]
   },
   {
    "id": "beacon",
-   "t0": 77.954,
-   "d": 37.708,
+   "t0": 80.754,
+   "d": 38.308,
    "segs": [
-    79.354,
-    83.154,
-    88.877,
-    94.369,
-    100.862,
-    106.277
+    82.954,
+    86.754,
+    92.477,
+    97.969,
+    104.462,
+    109.877
    ]
   },
   {
    "id": "city",
-   "t0": 115.662,
-   "d": 37.169,
+   "t0": 119.062,
+   "d": 37.769,
    "segs": [
-    117.062,
-    121.785,
-    130.046,
-    136.308,
-    141.8,
-    146.138
+    121.262,
+    125.985,
+    134.246,
+    140.508,
+    146,
+    150.338
    ]
   },
   {
    "id": "flood",
-   "t0": 152.831,
-   "d": 15.508,
+   "t0": 156.831,
+   "d": 16.108,
    "segs": [
-    154.231,
-    161.8
+    159.031,
+    166.6
    ]
   },
   {
    "id": "modern",
-   "t0": 168.338,
-   "d": 63.154,
+   "t0": 172.938,
+   "d": 63.754,
    "segs": [
-    169.738,
-    175.846,
-    183.415,
-    192.6,
-    202.708,
-    209.2,
-    217.923,
-    223.262
+    175.138,
+    181.246,
+    188.815,
+    198,
+    208.108,
+    214.6,
+    223.323,
+    228.662
    ]
   },
   {
    "id": "wisdom",
-   "t0": 231.492,
-   "d": 25.462,
+   "t0": 236.692,
+   "d": 26.062,
    "segs": [
-    232.892,
-    241.615,
-    247.877
+    238.892,
+    247.615,
+    253.877
    ]
   },
   {
    "id": "finale",
-   "t0": 256.954,
-   "d": 23.231,
+   "t0": 262.754,
+   "d": 24.031,
    "segs": [
-    258.354,
-    267.769
+    264.954,
+    274.369
    ]
   },
   {
    "id": "end",
-   "t0": 280.185,
+   "t0": 286.785,
    "d": 7,
    "segs": []
   }
  ],
  "subs": [
   {
-   "a": 11.4,
-   "b": 19.542,
+   "a": 13.2,
+   "b": 21.342,
    "s": "Bul estelik S. P. Tolstov basshılıǵındaǵı Xorezm arxeologiya hám etnografiya ekspediciyası tárepinen"
   },
   {
-   "a": 19.892,
-   "b": 23.265,
+   "a": 21.692,
+   "b": 25.065,
    "s": "XX ásirdiń 50–60-jıllarında anıqlanǵan"
   },
   {
-   "a": 23.615,
-   "b": 27.758,
+   "a": 25.415,
+   "b": 29.558,
    "s": "hám 1946-jılı arxeologiyalıq kartaǵa túsirilgen."
   },
   {
-   "a": 30.708,
-   "b": 37.004,
+   "a": 33.108,
+   "b": 39.404,
    "s": "Eń dáslep «Bul estelik ne ushın Buǵraxan dep atalǵan?» degen soraw tuwıladı."
   },
   {
-   "a": 37.354,
-   "b": 44.804,
+   "a": 39.754,
+   "b": 47.204,
    "s": "Maǵlıwmatlarda esteliktiń atı 992-jılı Mawarannaxrdı iyelegen Qaraxaniyler áwladınan bolǵan"
   },
   {
-   "a": 45.154,
-   "b": 49.758,
+   "a": 47.554,
+   "b": 52.158,
    "s": "Buǵraxannıń atı menen baylanıslı ekenligi kórsetiledi."
   },
   {
-   "a": 50.108,
-   "b": 57.481,
+   "a": 52.508,
+   "b": 59.881,
    "s": "Sonday-aq, Buǵraxan qalası Xorezmshahlar mámleketiniń orayı bolǵan degen boljawlar da bar."
   },
   {
-   "a": 60.431,
-   "b": 64.804,
+   "a": 63.431,
+   "b": 67.804,
    "s": "Estelikte saqlanǵan minara XI ásirden derek beredi."
   },
   {
-   "a": 65.154,
-   "b": 69.065,
+   "a": 68.154,
+   "b": 72.065,
    "s": "Esteliktiń ulıwma maydanı 60 gektardan aslam."
   },
   {
-   "a": 69.415,
-   "b": 76.404,
+   "a": 72.415,
+   "b": 79.404,
    "s": "Maǵlıwmatlar bul jerdiń bir waqıtları úlken civilizaciya orayı bolǵanlıǵın kórsetedi."
   },
   {
-   "a": 79.354,
-   "b": 82.804,
+   "a": 82.954,
+   "b": 86.404,
    "s": "Minara tariyxta qanday xızmet atqarǵan?"
   },
   {
-   "a": 83.154,
-   "b": 88.527,
+   "a": 86.754,
+   "b": 92.127,
    "s": "Boljawlarǵa qaraǵanda, ol xabar beriw ornı bolǵan bolıwı múmkin."
   },
   {
-   "a": 88.877,
-   "b": 94.019,
+   "a": 92.477,
+   "b": 97.619,
    "s": "Minaranıń átirapı jámiyetlik orın bolǵan degen juwmaq ta bar."
   },
   {
-   "a": 94.369,
-   "b": 100.512,
+   "a": 97.969,
+   "b": 104.112,
    "s": "Orta ásirlerde Xorezm minaralarınıń qurılısında ulıwmalıq belgiler bolǵan."
   },
   {
-   "a": 100.862,
-   "b": 105.927,
+   "a": 104.462,
+   "b": 109.527,
    "s": "Olar biyik, dóńgelek bolıp, joqarı qaray jińishkerip barǵan."
   },
   {
-   "a": 106.277,
-   "b": 114.112,
+   "a": 109.877,
+   "b": 117.712,
    "s": "Buǵraxan minarasınıń biyikligi haqqında anıq maǵlıwmat joq. Bul haqqında tek boljawlar aytıladı."
   },
   {
-   "a": 117.062,
-   "b": 121.435,
+   "a": 121.262,
+   "b": 125.635,
    "s": "Minaralar qurılısı jaǵınan hár túrli bolıwı múmkin."
   },
   {
-   "a": 121.785,
-   "b": 129.696,
+   "a": 125.985,
+   "b": 133.896,
    "s": "Musılman xalıqlarınıń tariyxında minaralar tiykarınan namaz oqıytuǵın orın sıpatında qollanılǵan."
   },
   {
-   "a": 130.046,
-   "b": 135.958,
+   "a": 134.246,
+   "b": 140.158,
    "s": "Buǵraxan qalası Xorezmshahlar mámleketiniń arqa shegarasında jaylasqan."
   },
   {
-   "a": 136.308,
-   "b": 141.45,
+   "a": 140.508,
+   "b": 145.65,
    "s": "Izertlewler qalanıń úsh bólimnen ibarat bolǵanlıǵın kórsetti."
   },
   {
-   "a": 141.8,
-   "b": 145.788,
+   "a": 146,
+   "b": 149.988,
    "s": "Onıń oraylıq bóliminde qala meshiti jaylasqan."
   },
   {
-   "a": 146.138,
-   "b": 151.281,
+   "a": 150.338,
+   "b": 155.481,
    "s": "Buǵraxan minarası Xorezmshahlar dáwirine tán usılda qurılǵan."
   },
   {
-   "a": 154.231,
-   "b": 161.45,
+   "a": 159.031,
+   "b": 166.25,
    "s": "Bul jerlerdi birneshe márte suw basqanına qaramastan, Buǵraxan minarası saqlanıp qalǵan."
   },
   {
-   "a": 161.8,
-   "b": 166.788,
+   "a": 166.6,
+   "b": 171.588,
    "s": "Bul onıń qanshelli sheberlik penen qurılǵanlıǵın kórsetedi."
   },
   {
-   "a": 169.738,
-   "b": 175.496,
+   "a": 175.138,
+   "b": 180.896,
    "s": "Buǵraxan esteligin úyreniw jumısları birneshe basqıshta alıp barıldı."
   },
   {
-   "a": 175.846,
-   "b": 183.065,
+   "a": 181.246,
+   "b": 188.465,
    "s": "Ózbekstan Respublikası Prezidentiniń 2025-jılı qabıl etilgen 248-sanlı qararına muwapıq,"
   },
   {
-   "a": 183.415,
-   "b": 192.25,
+   "a": 188.815,
+   "b": 197.65,
    "s": "jańa arxeologiyalıq orınlardı úyreniw hám jańa turistlik baǵdarlardı jolǵa qoyıw wazıypaları belgilengen edi."
   },
   {
-   "a": 192.6,
-   "b": 202.358,
+   "a": 198,
+   "b": 207.758,
    "s": "Usı tapsırmaǵa muwapıq, Berdaq atındaǵı Qaraqalpaq mámleketlik universitetiniń arxeologiya kafedrası qánigeleri tárepinen"
   },
   {
-   "a": 202.708,
-   "b": 208.85,
+   "a": 208.108,
+   "b": 214.25,
    "s": "Buǵraxan esteligin qayta tiklew hám abadanlastırıw jumısları alıp barıldı."
   },
   {
-   "a": 209.2,
-   "b": 217.573,
+   "a": 214.6,
+   "b": 222.973,
    "s": "Burın eski qalalardıń qazıp úyrenilgen orınları jumıslar tamamlanǵannan keyin qaytadan jabılatuǵın edi."
   },
   {
-   "a": 217.923,
-   "b": 222.912,
+   "a": 223.323,
+   "b": 228.312,
    "s": "Bul sayaxatshılardıń itibarın tartıwǵa kesent etetuǵın edi."
   },
   {
-   "a": 223.262,
-   "b": 229.942,
+   "a": 228.662,
+   "b": 235.342,
    "s": "Endi Buǵraxan esteligin qısı-jazı kóriw hám zıyarat etiw múmkinshiligi jaratıldı."
   },
   {
-   "a": 232.892,
-   "b": 241.265,
+   "a": 238.892,
+   "b": 247.265,
    "s": "Úlkemiz aymaǵınan tabılǵan hám úyrenilip atırǵan bul qalalar bir juwmaq shıǵarıwǵa múmkinshilik beredi."
   },
   {
-   "a": 241.615,
-   "b": 247.527,
+   "a": 247.615,
+   "b": 253.527,
    "s": "Olardıń qurılısında tereń bilim, bay tájiriybe hám sheberlik jámlengen."
   },
   {
-   "a": 247.877,
-   "b": 255.404,
+   "a": 253.877,
+   "b": 261.404,
    "s": "Demek, biz jasap atırǵan aymaq orta ásirlerde ilim-bilim rawajlanǵan oraylardıń biri bolǵan."
   },
   {
-   "a": 258.354,
-   "b": 267.419,
+   "a": 264.954,
+   "b": 274.019,
    "s": "Qońırat rayonı aymaǵında jaylasqan, XI–XIV ásirlerge tiyisli bul estelikti úyreniw jumısları ele de dawam etedi."
   },
   {
-   "a": 267.769,
-   "b": 274.835,
+   "a": 274.369,
+   "b": 281.435,
    "s": "Onıń qatlamlarında ele de talay maǵlıwmatlar hám biybaha derekler bar ekenligi sózsiz."
+  }
+ ],
+ "shots": [
+  {
+   "a": 0,
+   "b": 11,
+   "img": "21",
+   "scene": "intro"
+  },
+  {
+   "a": 11,
+   "b": 25.915,
+   "img": "02",
+   "scene": "exped"
+  },
+  {
+   "a": 24.815,
+   "b": 30.908,
+   "img": "03",
+   "scene": "exped"
+  },
+  {
+   "a": 30.908,
+   "b": 40.254,
+   "img": "22",
+   "scene": "name"
+  },
+  {
+   "a": 39.154,
+   "b": 48.054,
+   "img": "04",
+   "scene": "name"
+  },
+  {
+   "a": 46.954,
+   "b": 53.008,
+   "img": "23",
+   "scene": "name"
+  },
+  {
+   "a": 51.908,
+   "b": 61.231,
+   "img": "01",
+   "scene": "name"
+  },
+  {
+   "a": 61.231,
+   "b": 65.914,
+   "img": "19",
+   "scene": "minaret"
+  },
+  {
+   "a": 64.814,
+   "b": 68.654,
+   "img": "05",
+   "scene": "minaret"
+  },
+  {
+   "a": 67.554,
+   "b": 72.915,
+   "img": "07",
+   "scene": "minaret"
+  },
+  {
+   "a": 71.815,
+   "b": 80.754,
+   "img": "07",
+   "scene": "minaret"
+  },
+  {
+   "a": 80.754,
+   "b": 87.254,
+   "img": "08",
+   "scene": "beacon"
+  },
+  {
+   "a": 86.154,
+   "b": 92.977,
+   "img": "07",
+   "scene": "beacon"
+  },
+  {
+   "a": 91.877,
+   "b": 98.469,
+   "img": "06",
+   "scene": "beacon"
+  },
+  {
+   "a": 97.369,
+   "b": 110.377,
+   "img": "BUILD",
+   "scene": "beacon"
+  },
+  {
+   "a": 109.277,
+   "b": 119.062,
+   "img": "19",
+   "scene": "beacon"
+  },
+  {
+   "a": 119.062,
+   "b": 126.485,
+   "img": "18",
+   "scene": "city"
+  },
+  {
+   "a": 125.385,
+   "b": 134.746,
+   "img": "09",
+   "scene": "city"
+  },
+  {
+   "a": 133.646,
+   "b": 141.008,
+   "img": "01",
+   "scene": "city"
+  },
+  {
+   "a": 139.908,
+   "b": 146.5,
+   "img": "07",
+   "scene": "city"
+  },
+  {
+   "a": 145.4,
+   "b": 150.838,
+   "img": "09",
+   "scene": "city"
+  },
+  {
+   "a": 149.738,
+   "b": 156.831,
+   "img": "05",
+   "scene": "city"
+  },
+  {
+   "a": 156.831,
+   "b": 163.315,
+   "img": "10",
+   "scene": "flood"
+  },
+  {
+   "a": 162.215,
+   "b": 167.1,
+   "img": "11",
+   "scene": "flood"
+  },
+  {
+   "a": 166,
+   "b": 172.938,
+   "img": "12",
+   "scene": "flood"
+  },
+  {
+   "a": 172.938,
+   "b": 181.746,
+   "img": "13",
+   "scene": "modern"
+  },
+  {
+   "a": 180.646,
+   "b": 189.315,
+   "img": "03",
+   "scene": "modern"
+  },
+  {
+   "a": 188.215,
+   "b": 198.5,
+   "img": "14",
+   "scene": "modern"
+  },
+  {
+   "a": 197.4,
+   "b": 208.608,
+   "img": "13",
+   "scene": "modern"
+  },
+  {
+   "a": 207.508,
+   "b": 215.1,
+   "img": "19",
+   "scene": "modern"
+  },
+  {
+   "a": 214,
+   "b": 229.162,
+   "img": "02",
+   "scene": "modern"
+  },
+  {
+   "a": 228.062,
+   "b": 236.692,
+   "img": "15",
+   "scene": "modern"
+  },
+  {
+   "a": 236.692,
+   "b": 248.115,
+   "img": "04",
+   "scene": "wisdom"
+  },
+  {
+   "a": 247.015,
+   "b": 254.377,
+   "img": "16",
+   "scene": "wisdom"
+  },
+  {
+   "a": 253.277,
+   "b": 262.754,
+   "img": "17",
+   "scene": "wisdom"
+  },
+  {
+   "a": 262.754,
+   "b": 274.869,
+   "img": "21",
+   "scene": "finale"
+  },
+  {
+   "a": 273.769,
+   "b": 286.785,
+   "img": "20",
+   "scene": "finale"
+  }
+ ],
+ "events": [
+  {
+   "t": 0,
+   "k": "cut",
+   "tr": "luma"
+  },
+  {
+   "t": 11,
+   "k": "cut",
+   "tr": "luma"
+  },
+  {
+   "t": 11.3,
+   "k": "chapter"
+  },
+  {
+   "t": 13.7,
+   "k": "gold"
+  },
+  {
+   "t": 22.092,
+   "k": "info",
+   "ty": "timeline"
+  },
+  {
+   "t": 24.815,
+   "k": "tr",
+   "tr": "depth"
+  },
+  {
+   "t": 25.815,
+   "k": "info",
+   "ty": "stamp"
+  },
+  {
+   "t": 30.908,
+   "k": "cut",
+   "tr": "flash"
+  },
+  {
+   "t": 31.208,
+   "k": "chapter"
+  },
+  {
+   "t": 33.608,
+   "k": "gold"
+  },
+  {
+   "t": 39.154,
+   "k": "tr",
+   "tr": "luma"
+  },
+  {
+   "t": 40.154,
+   "k": "info",
+   "ty": "counter"
+  },
+  {
+   "t": 46.954,
+   "k": "tr",
+   "tr": "depth"
+  },
+  {
+   "t": 47.954,
+   "k": "info",
+   "ty": "flow"
+  },
+  {
+   "t": 51.908,
+   "k": "tr",
+   "tr": "luma"
+  },
+  {
+   "t": 53.008,
+   "k": "gold"
+  },
+  {
+   "t": 61.231,
+   "k": "cut",
+   "tr": "flash"
+  },
+  {
+   "t": 61.531,
+   "k": "chapter"
+  },
+  {
+   "t": 63.831,
+   "k": "info",
+   "ty": "timescan"
+  },
+  {
+   "t": 64.814,
+   "k": "tr",
+   "tr": "scan"
+  },
+  {
+   "t": 67.554,
+   "k": "tr",
+   "tr": "depth"
+  },
+  {
+   "t": 68.554,
+   "k": "info",
+   "ty": "area"
+  },
+  {
+   "t": 71.815,
+   "k": "tr",
+   "tr": "luma"
+  },
+  {
+   "t": 72.915,
+   "k": "gold"
+  },
+  {
+   "t": 80.754,
+   "k": "cut",
+   "tr": "luma"
+  },
+  {
+   "t": 81.054,
+   "k": "chapter"
+  },
+  {
+   "t": 83.354,
+   "k": "info",
+   "ty": "question"
+  },
+  {
+   "t": 86.154,
+   "k": "tr",
+   "tr": "depth"
+  },
+  {
+   "t": 87.154,
+   "k": "info",
+   "ty": "signal"
+  },
+  {
+   "t": 91.877,
+   "k": "tr",
+   "tr": "luma"
+  },
+  {
+   "t": 92.977,
+   "k": "gold"
+  },
+  {
+   "t": 97.369,
+   "k": "tr",
+   "tr": "flash"
+  },
+  {
+   "t": 98.469,
+   "k": "gold"
+  },
+  {
+   "t": 104.862,
+   "k": "info",
+   "ty": "triad"
+  },
+  {
+   "t": 109.277,
+   "k": "tr",
+   "tr": "luma"
+  },
+  {
+   "t": 110.277,
+   "k": "info",
+   "ty": "measure"
+  },
+  {
+   "t": 119.062,
+   "k": "cut",
+   "tr": "flash"
+  },
+  {
+   "t": 119.362,
+   "k": "chapter"
+  },
+  {
+   "t": 125.385,
+   "k": "tr",
+   "tr": "luma"
+  },
+  {
+   "t": 126.485,
+   "k": "gold"
+  },
+  {
+   "t": 133.646,
+   "k": "tr",
+   "tr": "depth"
+  },
+  {
+   "t": 134.646,
+   "k": "info",
+   "ty": "map"
+  },
+  {
+   "t": 139.908,
+   "k": "tr",
+   "tr": "luma"
+  },
+  {
+   "t": 140.908,
+   "k": "info",
+   "ty": "parts"
+  },
+  {
+   "t": 145.4,
+   "k": "tr",
+   "tr": "depth"
+  },
+  {
+   "t": 146.5,
+   "k": "gold"
+  },
+  {
+   "t": 149.738,
+   "k": "tr",
+   "tr": "luma"
+  },
+  {
+   "t": 150.838,
+   "k": "gold"
+  },
+  {
+   "t": 156.831,
+   "k": "cut",
+   "tr": "flash"
+  },
+  {
+   "t": 157.131,
+   "k": "chapter"
+  },
+  {
+   "t": 159.431,
+   "k": "info",
+   "ty": "water"
+  },
+  {
+   "t": 162.215,
+   "k": "tr",
+   "tr": "luma"
+  },
+  {
+   "t": 166,
+   "k": "tr",
+   "tr": "depth"
+  },
+  {
+   "t": 167,
+   "k": "info",
+   "ty": "check"
+  },
+  {
+   "t": 167.1,
+   "k": "gold"
+  },
+  {
+   "t": 172.938,
+   "k": "cut",
+   "tr": "flash"
+  },
+  {
+   "t": 173.238,
+   "k": "chapter"
+  },
+  {
+   "t": 175.638,
+   "k": "gold"
+  },
+  {
+   "t": 180.646,
+   "k": "tr",
+   "tr": "luma"
+  },
+  {
+   "t": 181.646,
+   "k": "info",
+   "ty": "doc"
+  },
+  {
+   "t": 188.215,
+   "k": "tr",
+   "tr": "depth"
+  },
+  {
+   "t": 189.315,
+   "k": "gold"
+  },
+  {
+   "t": 197.4,
+   "k": "tr",
+   "tr": "luma"
+  },
+  {
+   "t": 198.5,
+   "k": "gold"
+  },
+  {
+   "t": 207.508,
+   "k": "tr",
+   "tr": "depth"
+  },
+  {
+   "t": 208.608,
+   "k": "gold"
+  },
+  {
+   "t": 214,
+   "k": "tr",
+   "tr": "luma"
+  },
+  {
+   "t": 215.1,
+   "k": "gold"
+  },
+  {
+   "t": 228.062,
+   "k": "tr",
+   "tr": "flash"
+  },
+  {
+   "t": 229.062,
+   "k": "info",
+   "ty": "seasons"
+  },
+  {
+   "t": 236.692,
+   "k": "cut",
+   "tr": "flash"
+  },
+  {
+   "t": 236.992,
+   "k": "chapter"
+  },
+  {
+   "t": 239.392,
+   "k": "gold"
+  },
+  {
+   "t": 247.015,
+   "k": "tr",
+   "tr": "depth"
+  },
+  {
+   "t": 248.015,
+   "k": "info",
+   "ty": "icons3"
+  },
+  {
+   "t": 253.277,
+   "k": "tr",
+   "tr": "luma"
+  },
+  {
+   "t": 254.377,
+   "k": "gold"
+  },
+  {
+   "t": 262.754,
+   "k": "cut",
+   "tr": "flash"
+  },
+  {
+   "t": 263.054,
+   "k": "chapter"
+  },
+  {
+   "t": 265.354,
+   "k": "info",
+   "ty": "century"
+  },
+  {
+   "t": 273.769,
+   "k": "tr",
+   "tr": "depth"
+  },
+  {
+   "t": 274.769,
+   "k": "info",
+   "ty": "strata"
+  },
+  {
+   "t": 274.869,
+   "k": "gold"
   }
  ]
 }
