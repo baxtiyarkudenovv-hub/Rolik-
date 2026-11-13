@@ -1,4 +1,4 @@
-// Buǵraxan esteligi — kinematik hújjetli film: berilgen kadrlar + tereńlik kartası (Depth-Anything-V2) arqalı 2.5D parallaks,
+// Bugraxan esteligi — kinematik hújjetli film: berilgen kadrlar + tereńlik kartası (Depth-Anything-V2) arqalı 2.5D parallaks,
 // shader ótiwler, altın infografika, latın subtitrler. Muzıkasız — tek ses effektleri (sfx.py).
 const W = 1920, H = 1080, PH = 804, BAR = (H - PH) / 2;
 const cv = document.getElementById('c'), x = cv.getContext('2d');
@@ -28,7 +28,7 @@ const SHOTS = {
 // Ekrandaǵı jazıwlar — tek diktor tekstindegi sózler, sanlar hám sáneler (qaraqalpaq latın jazıwında).
 const KEYS = {
   exped: [[0, 'S. P. Tolstov', 'Xorezm arxeologiya hám etnografiya ekspediciyası', { size: 66 }]],
-  name: [[0, 'Bul estelik ne ushın Buǵraxan dep atalǵan?', null, { size: 46 }], [2, 'Qaraxaniyler áwladınan bolǵan Buǵraxan', null, { size: 48 }], [3, 'Xorezmshahlar mámleketiniń orayı', 'boljawlar', { size: 52 }]],
+  name: [[0, 'Bul estelik ne ushın Bugraxan dep atalǵan?', null, { size: 46 }], [2, 'Qaraxaniyler áwladınan bolǵan Bugraxan', null, { size: 48 }], [3, 'Xorezmshahlar mámleketiniń orayı', 'boljawlar', { size: 52 }]],
   minaret: [[2, 'Úlken civilizaciya orayı', null, { size: 58 }]],
   beacon: [[2, 'Jámiyetlik orın', 'minaranıń átirapı'], [3, 'Ulıwmalıq belgiler', 'Xorezm minaraları', { size: 58 }], [5, 'Biyikligi haqqında anıq maǵlıwmat joq', 'tek boljawlar aytıladı', { size: 46 }]],
   city: [[1, 'Namaz oqıytuǵın orın', 'musılman xalıqlarınıń tariyxında', { size: 56 }], [4, 'Qala meshiti', 'oraylıq bóliminde'], [5, 'Xorezmshahlar dáwirine tán usıl', null, { size: 52 }]],
@@ -128,7 +128,8 @@ function upload(img) { const t = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2
 const load = src => new Promise((r, j) => { const im = new Image(); im.onload = () => r(im); im.onerror = j; im.src = src; });
 const need = [...new Set(SH.map(s => s.img))].filter(n => n !== 'BUILD');
 window.ready = Promise.all(need.map(async n => { const [a, b] = await Promise.all([load(`footage/${n}.jpg`), load(`footage/depth/${n}.png`)]); TEX[n] = [upload(a), upload(b)]; DIM[n] = [a.width, a.height]; }))
-  .then(() => document.fonts.ready).then(() => true);
+  .then(() => Promise.all(['600', '700'].flatMap(w => ['', 'italic '].map(st => document.fonts.load(`${st}${w} 40px CG`, 'AaǴǵıŃńÁáÓóÚú')))))
+  .then(() => document.fonts.load('500 30px Inter', 'ǵı')).then(() => document.fonts.ready).then(() => true);
 function camOf(s, t) {
   const u = eio(p(t, s.a, s.b)), mv = s.mv, [iw, ih] = DIM[s.img];
   const cov = [Math.min(1, (iw / ih) / (W / PH) * 0 + 1), (iw / (W / PH)) / ih]; // cover fit by width
@@ -225,7 +226,7 @@ const IG = {
   signal(o, l, a, s, t) { const [X, Y] = projImg(s, t, o.ax, o.ay);
     for (let i = 0; i < 4; i++) { const r = ((l * .45 + i / 4) % 1); x.save(); x.beginPath(); x.ellipse(X, Y, 30 + r * 520, (30 + r * 520) * .42, 0, 0, 7); stroke(a * (1 - r) * .8 * eo(p(l, 0, .6)), 2); x.restore(); }
     dot(X, Y, 8, a * eo(p(l, 0, .5))); backing(520, BAR + 170, 380, a * .9); gold(o.label, 520, BAR + 160, 52, l, .6, { a }); small('boljawlarǵa qaraǵanda', 520, BAR + 214, eo(p(l, 1, 1.8)) * a, { size: 26, ls: 1, w: 500 }); },
-  triad(o, l, a) { backing(o.x, o.y, 400, a * .95); const items = [['biyik', 'up'], ['dóńgelek', 'circle'], ['jińishkergen', 'taper']];
+  triad(o, l, a) { backing(o.x, o.y, 400, a * .95); const items = [['biyik', 'up'], ['dóńgelek', 'circle'], ['jińishkerip barǵan', 'taper']];
     items.forEach(([s, ic], i) => { const Y = o.y - 140 + i * 140, X = o.x - 120, t0 = i * .9, k = eo(p(l, t0, t0 + 1)); if (k <= 0) return;
       x.save(); if (ic === 'up') { line(X, Y + 40, X, Y - 40, k, a, 3); if (k > .8) { x.beginPath(); x.moveTo(X - 14, Y - 26); x.lineTo(X, Y - 42); x.lineTo(X + 14, Y - 26); stroke(a, 3); } }
       if (ic === 'circle') arc(X, Y, 34, k, a, 3);
@@ -269,7 +270,7 @@ const IG = {
     const st = [[-260, -40], [-80, -70], [120, -30], [280, 60], [300, 200], [60, 250], [-200, 220], [-290, 90]];
     poly(st, k2, 1.5, a * .6);
     x.save(); x.setLineDash([2, 0]); x.beginPath(); for (let i = 0; i <= 30 * k3; i++) { const f = i / 30, q = [lerp(-260, 120, f), lerp(-40, -30, f) - Math.sin(f * 3.14) * 40]; i ? x.lineTo(X + q[0], Y + q[1]) : x.moveTo(X + q[0], Y + q[1]); } stroke(a, 4, 22); x.restore();
-    const pb = eo(p(l, 2.6, 3.2)); if (pb > 0) { const bx = X - 70, by = Y - 70; for (let i = 0; i < 3; i++) { const r = (l * .6 + i / 3) % 1; x.save(); x.beginPath(); x.arc(bx, by, 6 + r * 46, 0, 7); stroke(a * pb * (1 - r), 2); x.restore(); } dot(bx, by, 7, a * pb); gold('Buǵraxan', bx, by + 50, 44, l, 2.8, { a }); }
+    const pb = eo(p(l, 2.6, 3.2)); if (pb > 0) { const bx = X - 70, by = Y - 70; for (let i = 0; i < 3; i++) { const r = (l * .6 + i / 3) % 1; x.save(); x.beginPath(); x.arc(bx, by, 6 + r * 46, 0, 7); stroke(a * pb * (1 - r), 2); x.restore(); } dot(bx, by, 7, a * pb); gold('Bugraxan', bx, by + 50, 44, l, 2.8, { a }); }
     gold('Arqa shegara', X, Y - 310, 70, l, 1.8, { a }); gold('Xorezmshahlar mámleketi', X, Y + 310, 44, l, 2, { it: true, a }); x.restore(); },
   timescan(o, l, a) { backing(o.x, o.y, 380, a * .95); const k = eo(p(l, .2, 2.2)), yr = Math.round(lerp(2025, 1000, k));
     const r = 130; arc(o.x, o.y, r, eo(p(l, 0, 1.6)), a * .9, 2); arc(o.x, o.y, r + 12, eo(p(l, .3, 1.9)), a * .45, 1);
@@ -317,9 +318,9 @@ async function draw(t) {
   // titles
   if (sc.id === 'intro') { const out = 1 - p(lt, sc.d - 1.4, sc.d - .2); backing(W / 2, 530, 900, out * .8);
     gold('Qaraqalpaqstan tariyxı', W / 2, 420, 46, lt, 1.2, { st: .03, a: out });
-    gold('Buǵraxan esteligi', W / 2, 522, 136, lt, 2.4, { st: .07, a: out }); line(W / 2 - 260, 600, W / 2 + 260, 600, eo(p(lt, 3.6, 5)), out * .8, 1.5);
+    gold('Bugraxan esteligi', W / 2, 522, 136, lt, 2.4, { st: .07, a: out }); line(W / 2 - 260, 600, W / 2 + 260, 600, eo(p(lt, 3.6, 5)), out * .8, 1.5);
   }
-  if (sc.id === 'end') { const o = 1 - p(lt, sc.d - 1.5, sc.d - .3); gold('Qaraqalpaqstan tariyxı', W / 2, 420, 44, lt, .3, { st: .03, a: o }); gold('Buǵraxan esteligi', W / 2, 520, 120, lt, .8, { st: .06, a: o }); }
+  if (sc.id === 'end') { const o = 1 - p(lt, sc.d - 1.5, sc.d - .3); gold('Qaraqalpaqstan tariyxı', W / 2, 420, 44, lt, .3, { st: .03, a: o }); gold('Bugraxan esteligi', W / 2, 520, 120, lt, .8, { st: .06, a: o }); }
   // chapter card (centered, gold) at the start of each chapter
   if (CH[sc.id]) { const [n, nm] = CH[sc.id], k = eo(p(lt, .25, 1)) * (1 - p(lt, 2.1, 2.7)); if (k > 0) { backing(W / 2, H / 2, 700, k * .9); gold(n, W / 2, H / 2 - 50, 70, lt, .25, { a: 1 - p(lt, 2.1, 2.7), st: .1 }); line(W / 2 - 120 * k, H / 2 + 2, W / 2 + 120 * k, H / 2 + 2, 1, k * .8, 1.5); gold(nm, W / 2, H / 2 + 52, 54, lt, .5, { it: true, a: 1 - p(lt, 2.1, 2.7) }); }
     const k2 = eo(p(lt, 2.7, 3.5)) * (1 - p(lt, 7, 8)); if (k2 > 0) { x.save(); x.globalAlpha = k2; x.fillStyle = GOLD; x.fillRect(110, BAR + 46, 46, 2); x.restore(); txt(`${n} · ${nm}`.toUpperCase(), 172, BAR + 47, 20, '#f6e2c0', { a: k2, al: 'left', ls: 6 }); } }
