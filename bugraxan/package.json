@@ -1,0 +1,15 @@
+{
+  "name": "bugraxan",
+  "version": "1.0.0",
+  "description": "Кинематик анимацион ҳүжжетли фильм (16:9, 1920×1080, 25 fps, кадр 2.39:1 «синема» жолақлары менен), ~5 мин 50 с.",
+  "main": "film.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "three": "^0.169.0"
+  }
+}
